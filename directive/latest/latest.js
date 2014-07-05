@@ -1,4 +1,4 @@
-angular.module('ingr-web').directive('latest', function ($http) {
+angular.module('ingr-web').directive('latest', function ($http, apiUrls) {
   'use strict';
 
   return {
@@ -9,9 +9,13 @@ angular.module('ingr-web').directive('latest', function ($http) {
     },
     templateUrl: 'directive/latest/latest.html',
     link: function (scope, element, attrs, fn) {
-      var url = 'http://localhost:12345/?url=api.instagram.com/v1/media/search?lat=59.341994&lng=18.051995&client_id=be71f88c135c49d29659702774b86f74';
-      //
-      //59.341994, 18.051995
+
+      var byLocation = apiUrls.byLocation;
+      byLocation = byLocation.replace('{clientId}', 'be71f88c135c49d29659702774b86f74');
+      byLocation = byLocation.replace('{lat}', '59.34199');
+      byLocation = byLocation.replace('{lng}', '18.051995');
+
+      var url = apiUrls.base + byLocation;
 
       scope.grams = {};
 
@@ -20,7 +24,7 @@ angular.module('ingr-web').directive('latest', function ($http) {
           scope.grams = data;
         }).
         error(function(data, status, headers, config) {
-          console.log('Unable to load stations!', data);
+          console.log('Unable to load photos.', data);
         });
 
     }
