@@ -1,0 +1,14 @@
+<div>
+  <ul>
+    <li ng-repeat="gram in grams.data">
+      <h3>{{gram.user.username}}</h3>
+      <p>
+        {{gram.filter}}
+      </p>
+      <p>
+        {{gram.profile_picture}}
+      </p>
+      <img src="{{gram.images.low_resolution.url}}" />
+    </li>
+  </ul>
+</div>
