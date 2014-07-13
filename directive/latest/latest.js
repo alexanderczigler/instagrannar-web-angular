@@ -10,22 +10,56 @@ angular.module('ingr-web').directive('latest', function ($http, apiUrls) {
     templateUrl: 'directive/latest/latest.html',
     link: function (scope, element, attrs, fn) {
 
-      var byLocation = apiUrls.byLocation;
-      byLocation = byLocation.replace('{clientId}', 'be71f88c135c49d29659702774b86f74');
-      byLocation = byLocation.replace('{lat}', '59.34199');
-      byLocation = byLocation.replace('{lng}', '18.051995');
+      scope.coordinates = {
+        'lat': '',
+        'lng': ''
+      };
 
-      var url = apiUrls.base + byLocation;
+      scope.places = {
+        0: {
+          name: 'Vasastan',
+          'lat': '18.051995',
+          'lng': '59.34199'
+        },
+        1: {
+          name: 'Almedalen',
+          'lat': '18.290297',
+          'lng': '57.641200'
+        },
+        2: {
+          name: 'Belair',
+          'lat': '138.634046',
+          'lng': '-35.011028'
+        },
+        3: {
+          name: 'Wynyard',
+          lat: '151.205779',
+          lng: '-33.865726'
+        }
+      };
 
       scope.grams = {};
 
-      $http({method: 'GET', url: url}).
-        success(function(data, status, headers, config) {
-          scope.grams = data;
-        }).
-        error(function(data, status, headers, config) {
-          console.log('Unable to load photos.', data);
-        });
+      scope.getPictures = function (lat, lng) {
+        console.log(lat, lng);
+        var byLocation = apiUrls.byLocation;
+        byLocation = byLocation.replace('{lat}', lat);
+        byLocation = byLocation.replace('{lng}', lng);
+
+        var url = apiUrls.base + byLocation;
+
+        $http({method: 'GET', url: url}).
+          success(function(data, status, headers, config) {
+            scope.grams = data;
+          }).
+          error(function(data, status, headers, config) {
+            console.log('Unable to load photos.', data);
+          });
+      };
+
+      scope.t = function (time) {
+        return new Date(time * 1000);
+      };
 
     }
   };

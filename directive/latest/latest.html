@@ -1,14 +1,22 @@
 <div>
+
+  <h1>ingr-web</h1>
+
+  <span ng-repeat="place in places">
+    <a href="#" ng-click="getPictures(place.lat, place.lng)">{{place.name}}</a>
+  </span>
+
   <ul>
     <li ng-repeat="gram in grams.data">
       <h3>{{gram.user.username}}</h3>
       <p>
-        {{gram.filter}}
+        {{t(gram.created_time)}}
       </p>
       <p>
         {{gram.profile_picture}}
       </p>
-      <img src="{{gram.images.low_resolution.url}}" />
+      <img ng-show="!!gram" src="{{gram.images.low_resolution.url}}" />
     </li>
   </ul>
+
 </div>
