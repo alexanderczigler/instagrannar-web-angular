@@ -3,3 +3,4 @@ test/
 .idea
 bower_components
 node_modules
+secret.json
