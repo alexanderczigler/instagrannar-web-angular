@@ -1,4 +1,4 @@
-angular.module('ingr-web').directive('latest', function ($http, apiUrls) {
+angular.module('ingr-web').directive('latest', function ($rootScope, $http, apiUrls) {
   'use strict';
 
   return {
@@ -10,38 +10,33 @@ angular.module('ingr-web').directive('latest', function ($http, apiUrls) {
     templateUrl: 'directive/latest/latest.html',
     link: function (scope, element, attrs, fn) {
 
-      scope.coordinates = {
-        'lat': '',
-        'lng': ''
-      };
-
       scope.places = {
         0: {
-          name: 'Vasastan',
-          'lat': '18.051995',
-          'lng': '59.34199'
+          'name': 'Vasastan',
+          'lng': '18.051995',
+          'lat': '59.34199'
         },
         1: {
-          name: 'Almedalen',
-          'lat': '18.290297',
-          'lng': '57.641200'
+          'name': 'Almedalen',
+          'lng': '18.290297',
+          'lat': '57.641200'
         },
         2: {
-          name: 'Belair',
-          'lat': '138.634046',
-          'lng': '-35.011028'
+          'name': 'Belair',
+          'lng': '138.634046',
+          'lat': '-35.011028'
         },
         3: {
-          name: 'Wynyard',
-          lat: '151.205779',
-          lng: '-33.865726'
+          'name': 'Wynyard',
+          'lng': '151.205779',
+          'lat': '-33.865726'
         }
       };
 
       scope.grams = {};
 
       scope.getPictures = function (lat, lng) {
-        console.log(lat, lng);
+        console.log(lng, lat);
         var byLocation = apiUrls.byLocation;
         byLocation = byLocation.replace('{lat}', lat);
         byLocation = byLocation.replace('{lng}', lng);
@@ -61,6 +56,12 @@ angular.module('ingr-web').directive('latest', function ($http, apiUrls) {
         return new Date(time * 1000);
       };
 
+      $rootScope.$watch('place', function(place) {
+        if (!!$rootScope.place.reload) {
+          $rootScope.place.reload = false;
+          scope.getPictures(place.lat, place.lng);
+        }
+      }, true);
     }
   };
 });

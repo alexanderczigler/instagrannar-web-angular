@@ -1,4 +1,4 @@
-angular.module('ingr-web', ['ui.router', 'ngResource']);
+angular.module('ingr-web', ['ui.router', 'ngResource', 'google-maps']);
 
 angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) {
   'use strict';
@@ -12,6 +12,13 @@ angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) 
 
 angular.module('ingr-web').run(function ($rootScope) {
   'use strict';
+
+  $rootScope.place = {
+    lng: 18.051995,
+    lat: 59.34199,
+    dst: 500,
+    reload: false
+  };
 
   $rootScope.safeApply = function (fn) {
     var phase = $rootScope.$$phase;

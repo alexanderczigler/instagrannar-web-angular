@@ -15,11 +15,12 @@
       Area
     </p>
 
-    (Google Maps map)
+    <google-map center="map.center" draggable="true" zoom="map.zoom"></google-map>
+
     <br><br>
-    Distance (Select)
+    Distance: {{place.dst}} m
     <br><br>
-    <input type="button" value="Set" />
+    <input type="button" value="Set" data-ng-click="load()" />
   </div>
 
 </div>
