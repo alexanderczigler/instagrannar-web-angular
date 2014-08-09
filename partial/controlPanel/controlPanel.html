@@ -1,26 +1,30 @@
 <div ng-controller="ControlPanelCtrl">
 
-  <div class="authentication">
-    <p>
-      User authorization
-    </p>
+  <div class="controlpanel-content">
 
-    <input type="text" /><br />
-    <input type="password" />
+    <div class="authentication">
+      <p>
+        User authorization
+      </p>
 
-  </div>
+      <input type="text" /><br />
+      <input type="password" />
 
-  <div class="area">
-    <p>
-      Area
-    </p>
+    </div>
 
-    <google-map center="map.center" draggable="true" zoom="map.zoom"></google-map>
+    <div class="area">
+      <p>
+        Area
+      </p>
 
-    <br><br>
-    Distance: {{place.dst}} m
-    <br><br>
-    <input type="button" value="Set" data-ng-click="load()" />
+      <google-map center="map.center" draggable="true" zoom="map.zoom"></google-map>
+
+      <br><br>
+      Distance: {{place.dst}} m
+      <br><br>
+      <input type="button" value="Set" data-ng-click="load()" />
+    </div>
+
   </div>
 
 </div>

@@ -109,7 +109,7 @@ module.exports = function (grunt) {
           append:{selector:'head',html:'<link rel="stylesheet" href="css/app.full.min.css">'}
         },
         src:'dist/index.html'
-      }      
+      }
     },
     cssmin: {
       main: {
