@@ -6,6 +6,11 @@
   </span>
   -->
 
+  <span ng-repeat="gram in grams.data">
+    <photo instagram="gram"></photo>
+  </span>
+
+  <!--
   <ul>
     <li ng-repeat="gram in grams.data">
       <h3>{{gram.user.username}}</h3>
@@ -16,7 +21,9 @@
         {{gram.profile_picture}}
       </p>
       <img ng-show="!!gram" src="{{gram.images.low_resolution.url}}" />
+
     </li>
   </ul>
+  -->
 
 </div>

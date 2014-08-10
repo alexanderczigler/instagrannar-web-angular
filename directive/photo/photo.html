@@ -1,0 +1,15 @@
+<div>
+  <span class="photo">
+    <!--
+    <p>
+      <i ng-repeat="tag in instagram.tags">#{{tag}} </i>
+    </p>
+    -->
+    <p>
+      by <a href="http://instagram.com/{{instagram.user.username}}">{{instagram.user.username}}</a>
+    </p>
+    <a href="{{instagram.link}}" target="_blank">
+      <img src="{{instagram.images.thumbnail.url}}" alt="{{instagram.caption.text}}" />
+    </a>
+  </span>
+</div>
