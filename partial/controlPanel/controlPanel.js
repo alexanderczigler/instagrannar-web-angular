@@ -20,8 +20,19 @@ angular.module('ingr-web').controller('ControlPanelCtrl', function ($scope, $roo
       $rootScope.place.lng = $scope.map.center.longitude;
       $rootScope.place.lat = $scope.map.center.latitude;
       $rootScope.place.reload = true;
+
+      $scope.place.dst = $scope.getDistance($scope.map.zoom);
+      console.log($scope.map.zoom);
     });
   };
 
+  $scope.getDistance = function(zoom) {
+    if (zoom <= 10) {
+      return 5000;
+    }
+
+    var reference = 21 - zoom;
+    return 500 * reference;
+  };
 
 });

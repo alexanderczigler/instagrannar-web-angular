@@ -57,6 +57,9 @@ angular.module('ingr-web').directive('latest', function ($rootScope, $http, apiU
       };
 
       $rootScope.$watch('place', function(place) {
+
+        console.log(place);
+
         if (!!$rootScope.place.reload) {
           $rootScope.place.reload = false;
           scope.getPictures(place.lat, place.lng);
