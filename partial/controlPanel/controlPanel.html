@@ -17,7 +17,10 @@
         Area
       </p>
 
-      <google-map center="map.center" draggable="true" zoom="map.zoom"></google-map>
+      <google-map center="map.center" draggable="true" zoom="map.zoom" options="mapOptions">
+        <circle center="map.center" radius="place.dst" visible="true" stroke="circleStroke">
+        </circle>
+      </google-map>
 
       <br><br>
       Distance: {{place.dst}} m
