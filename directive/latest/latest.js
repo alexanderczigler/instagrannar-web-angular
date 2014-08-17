@@ -35,11 +35,12 @@ angular.module('ingr-web').directive('latest', function ($rootScope, $http, apiU
 
       scope.grams = {};
 
-      scope.getPictures = function (lat, lng) {
+      scope.getPictures = function (lat, lng, dst) {
         console.log(lng, lat);
         var byLocation = apiUrls.byLocation;
         byLocation = byLocation.replace('{lat}', lat);
         byLocation = byLocation.replace('{lng}', lng);
+        byLocation = byLocation.replace('{dst}', dst);
 
         var url = apiUrls.base + byLocation;
 
@@ -62,7 +63,7 @@ angular.module('ingr-web').directive('latest', function ($rootScope, $http, apiU
 
         if (!!$rootScope.place.reload) {
           $rootScope.place.reload = false;
-          scope.getPictures(place.lat, place.lng);
+          scope.getPictures(place.lat, place.lng, place.dst);
         }
       }, true);
     }

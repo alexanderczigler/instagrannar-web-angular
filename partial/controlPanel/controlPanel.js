@@ -31,7 +31,11 @@ angular.module('ingr-web').controller('ControlPanelCtrl', function ($scope, $roo
       return 5000;
     }
 
-    var reference = 21 - zoom;
+    if (zoom > 16) {
+      return 500;
+    }
+
+    var reference = 16 - zoom;
     return 500 * reference;
   };
 
