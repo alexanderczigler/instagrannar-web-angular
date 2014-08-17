@@ -10,8 +10,8 @@ angular.module('ingr-web').controller('ControlPanelCtrl', function ($scope, $roo
       }
     },
     center: {
-      longitude: 18.051995,
-      latitude: 59.34199
+      longitude: 0.0,
+      latitude: 0.0
     },
     zoom: 14
   };
@@ -44,18 +44,47 @@ angular.module('ingr-web').controller('ControlPanelCtrl', function ($scope, $roo
 
   $scope.$watch('map', function() {
     console.log($scope.map.events);
-
+    if (!!$scope.map.center) {
+      if ($scope.map.center.latitude === 0.0 && $scope.map.center.longitude === 0.0) {
+        $scope.setCoords();
+      }
+    }
   });
 
-  try {
-    navigator.geolocation.getCurrentPosition(function(data) {
-      console.log('success', data);
-    }, function(errorData){
-      console.log('position error', errorData);
-    }, null);
-  } catch(e) {
-    console.log('err', e);
-  }
+  $scope.setCoords = function() {
+    try {
+      navigator.geolocation.getCurrentPosition(function(data) {
+        console.log('success', data);
+        console.log('coords', data.coords);
+        if (!!data.coords) {
+          $rootScope.safeApply(function() {
+            $scope.map.center.latitude = data.coords.latitude;
+            $scope.map.center.longitude = data.coords.longitude;
+            return;
+          });
+        }
+        else {
+          // Café Pascal
+          $scope.map.center.latitude = 59.34199;
+          $scope.map.center.longitude = 18.051995;
+        }
+      }, function(errorData){
+        console.log('position error', errorData);
+        // Café Pascal
+        $scope.map.center.latitude = 59.34199;
+        $scope.map.center.longitude = 18.051995;
+      }, null);
+    } catch(e) {
+      console.log('err', e);
+      // Café Pascal
+      $scope.map.center.latitude = 59.34199;
+      $scope.map.center.longitude = 18.051995;
+    }
+
+    // Café Pascal
+    $scope.map.center.latitude = 59.34199;
+    $scope.map.center.longitude = 18.051995;
+  };
 
   $scope.getDistance = function(zoom) {
     var scale = {
