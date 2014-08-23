@@ -3,9 +3,9 @@
 <head>
   <title>Instagrannar</title>
 
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
 
   <!-- App LESS -->
   <link href="css/app.less" type="text/css" rel="stylesheet/less">
@@ -17,7 +17,7 @@
   <script src="http://localhost:35729/livereload.js" data-build="exclude"></script>
 
   <!-- JS from Bower components -->
-  <script src="other_components/google.js"></script>
+  <script src="//maps.googleapis.com/maps/api/js?sensor=false" data-build="exclude" data-remove="exclude"></script>
   <script src="bower_components/less/dist/less-1.5.1.js" data-build="exclude"></script>
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -39,9 +39,7 @@
   <!-- Add New Model JS Above --> 
 
   <!-- Directive JS -->
-  <script src="directive/latest/latest.js"></script>
   <script src="directive/photo/photo.js"></script>
-  <script src="directive/lightbox/lightbox.js"></script>
   <!-- Add New Directive JS Above -->
 
   <!-- Filter JS -->
@@ -49,10 +47,8 @@
 
   <!-- Partial JS -->
   <script src="partial/main/main.js"></script>
-  <script src="partial/header/header.js"></script>
   <script src="partial/footer/footer.js"></script>
   <script src="partial/photoGrid/photoGrid.js"></script>
-  <script src="partial/controlPanel/controlPanel.js"></script>
   <script src="partial/pictureLoader/pictureLoader.js"></script>
   <script src="partial/map/map.js"></script>
   <!-- Add New Partial JS Above -->

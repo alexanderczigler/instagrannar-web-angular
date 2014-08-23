@@ -2,7 +2,6 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
   'use strict';
 
   $scope.grams = {};
-  $scope.meow = 'eow';
 
   $scope.getPictures = function (lat, lng, dst) {
     var byLocation = apiUrls.byLocation;
@@ -15,7 +14,6 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
     $http({method: 'GET', url: url}).
       success(function(data, status, headers, config) {
         $scope.grams = data;
-        console.log('data', $scope.grams.data);
       }).
       error(function(data, status, headers, config) {
         console.log('Unable to load photos.', data);
@@ -27,8 +25,6 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
   };
 
   $rootScope.$watch('place', function(place) {
-    console.log('place update', place);
-    console.log('placeReload', $rootScope.place.reload);
     if (!!$rootScope.place.reload) {
       $rootScope.place.reload = false;
       $scope.getPictures(place.lat, place.lng, place.dst);

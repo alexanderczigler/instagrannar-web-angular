@@ -15,7 +15,6 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
           $scope.place.lat = map.center.k;
           $scope.place.lng = map.center.B;
           $scope.place.dst = mapsHelper.mapZoomToDistance(map.zoom);
-          console.log('map-change', map.center);
         });
       }
     }

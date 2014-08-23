@@ -67,7 +67,15 @@ module.exports = function (grunt) {
       main: {
         files: [
           {src: ['index.html'], dest: 'dist/'},
-          {src: ['img/**'], dest: 'dist/'}
+          {src: ['img/**'], dest: 'dist/'},
+          {src: ['bower_components/font-awesome/fonts/*.woff'], dest: 'dist/fonts/fontawesome-webfont.woff'},
+          {src: ['bower_components/font-awesome/fonts/*.ttf'], dest: 'dist/fonts/fontawesome-webfont.ttf'}
+        ]
+      },
+      fonts: {
+        files: [
+          {src: ['bower_components/font-awesome/fonts/fontawesome-webfont.woff'], dest: 'fonts/fontawesome-webfont.woff'},
+          {src: ['bower_components/font-awesome/fonts/fontawesome-webfont.ttf'], dest: 'fonts/fontawesome-webfont.ttf'}
         ]
       }
     },
@@ -198,9 +206,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha');
   grunt.loadNpmTasks('grunt-ssh');
 
-  grunt.registerTask('build',['clean:before','less','dom_munger:readcss','dom_munger:readscripts','ngtemplates','cssmin','concat','ngmin','uglify','copy','dom_munger:removecss','dom_munger:addcss','dom_munger:removescripts','dom_munger:addscript','htmlmin','imagemin','clean:after']);
+  grunt.registerTask('build',['clean:before','less','dom_munger:readcss','dom_munger:readscripts','ngtemplates','cssmin','concat','ngmin','uglify','copy:main', 'copy:fonts','dom_munger:removecss','dom_munger:addcss','dom_munger:removescripts','dom_munger:addscript','htmlmin','imagemin','clean:after']);
   grunt.registerTask('test',['jshint', 'mocha']);
   grunt.registerTask('server', ['connect']);
   grunt.registerTask('deploy', ['build', 'sftp']);
-  grunt.registerTask('default', ['test', 'server', 'watch']);
+  grunt.registerTask('default', ['test', 'server', 'copy:fonts', 'watch']);
 };

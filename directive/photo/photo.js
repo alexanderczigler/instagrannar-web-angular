@@ -9,12 +9,10 @@ angular.module('ingr-web').directive('photo', function () {
     },
     templateUrl: 'directive/photo/photo.html',
     link: function (scope, element, attrs, fn) {
-      //console.log('instagram', scope.instagram);
 
-      scope.displayLightbox = function(id) {
-
-      };
-
+      /*
+       * Converts UNIX time to a readable timestamp with date.
+       */
       scope.t = function (time) {
         return new Date(time * 1000);
       };
