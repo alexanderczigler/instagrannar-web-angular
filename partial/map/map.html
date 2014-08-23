@@ -1,0 +1,23 @@
+<div ng-controller="MapCtrl">
+
+  <header class="banner" role="banner">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="site-title"><a class="brand" href="/">Instagrannar</a></div>
+        </div>
+      </div>
+    </div>
+
+    <google-map center="map.center" draggable="true" zoom="map.zoom" options="mapOptions" events="map.events">
+      <script type="text/ng-template" id="control.tpl.html">
+        <button data-ng-click="load(map.zoom)">Load</button>
+      </script>
+      <map-control template='control.tpl.html' position="bottom-center" controller="PictureLoaderCtrl"></map-control>
+      <circle center="map.center" radius="place.dst" visible="true" stroke="circleStroke"> </circle>
+    </google-map>
+
+  </header>
+
+</div>

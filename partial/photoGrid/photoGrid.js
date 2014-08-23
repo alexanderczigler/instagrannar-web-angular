@@ -1,4 +1,37 @@
-angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope) {
+angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http) {
   'use strict';
 
+  $scope.grams = {};
+  $scope.meow = 'eow';
+
+  $scope.getPictures = function (lat, lng, dst) {
+    var byLocation = apiUrls.byLocation;
+    byLocation = byLocation.replace('{lat}', lat);
+    byLocation = byLocation.replace('{lng}', lng);
+    byLocation = byLocation.replace('{dst}', dst);
+
+    var url = apiUrls.base + byLocation;
+
+    $http({method: 'GET', url: url}).
+      success(function(data, status, headers, config) {
+        $scope.grams = data;
+        console.log('data', $scope.grams.data);
+      }).
+      error(function(data, status, headers, config) {
+        console.log('Unable to load photos.', data);
+      });
+  };
+
+  $scope.t = function (time) {
+    return new Date(time * 1000);
+  };
+
+  $rootScope.$watch('place', function(place) {
+    console.log('place update', place);
+    console.log('placeReload', $rootScope.place.reload);
+    if (!!$rootScope.place.reload) {
+      $rootScope.place.reload = false;
+      $scope.getPictures(place.lat, place.lng, place.dst);
+    }
+  }, true);
 });

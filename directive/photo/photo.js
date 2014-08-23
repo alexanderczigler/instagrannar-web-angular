@@ -15,6 +15,10 @@ angular.module('ingr-web').directive('photo', function () {
 
       };
 
+      scope.t = function (time) {
+        return new Date(time * 1000);
+      };
+
     }
   };
 });

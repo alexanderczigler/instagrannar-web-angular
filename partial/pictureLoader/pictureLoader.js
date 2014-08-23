@@ -4,6 +4,7 @@ angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $ro
   $scope.place = $rootScope.place;
 
   $scope.load = function(zoom) {
+    console.log('click', zoom);
     $rootScope.safeApply(function () {
       $scope.place.dst = mapsHelper.mapZoomToDistance(zoom);
       $rootScope.place.changed = true;

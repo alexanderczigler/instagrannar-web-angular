@@ -1,0 +1,476 @@
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+
+::selection,
+::-moz-selection {
+  background: @gray-darker;
+  color: #fff;
+}
+
+img::selection,
+img::-moz-selection {
+  background: transparent;
+}
+
+body {
+  -webkit-tap-highlight-color: rgb(255,255,158);
+  position: relative;
+  right: 0;
+  background: #fff;
+  .transition(all .5s);
+}
+
+a {
+  outline: none !important;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none;
+}
+
+.page {
+  background: #fff;
+}
+
+
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.banner {
+  text-align: center;
+  padding: 10px 0 0px 0;
+  background: @gray-lighter;
+
+  .site-title {
+    margin-top: 5px;
+  }
+
+  .brand {
+    text-transform: uppercase;
+    font-size: 30px;
+    color: @gray-dark;
+  }
+
+  .about {
+    margin-top: 50px;
+  }
+}
+
+
+
+/* ==========================================================================
+   Wrap
+   ========================================================================== */
+.wrap {
+  background: #fff;
+  padding: 60px 0;
+}
+
+
+
+/* ==========================================================================
+   Content
+   ========================================================================== */
+
+.content { }
+
+
+
+/* ==========================================================================
+   Primary Content
+   ========================================================================== */
+
+.main { }
+
+/* Gallery Shortcode */
+.gallery-row { padding: 15px 0; }
+
+
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+.sidebar {
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 300px;
+  background: @gray-darker;
+  display: block;
+  padding: 30px;
+  z-index: -1;
+
+  .admin-bar & {
+    top: 32px;
+  }
+
+  .widget {
+    border-bottom: 1px solid #111;
+    padding: 0 0 20px;
+  }
+
+  .widget_nav_menu {
+    ul {
+      margin: 20px 0 0;
+      list-style: none;
+      text-transform: uppercase;
+      font-size: @font-size-small;
+      letter-spacing: 1px;
+    }
+  }
+
+  .widget-title {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: @font-size-small;
+    color: #fff;
+  }
+
+  ul, ol {
+    margin: 0 0 0 20px;
+    padding: 0;
+  }
+
+  a:hover,
+  a:active,
+  a:focus {
+    color: #fff;
+  }
+}
+
+.toggle-sidebar i {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.sidebar-open {
+  right: -300px;
+  overflow: hidden;
+  .transition(all .5s);
+
+  .toggle-sidebar {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: @gray-darker;
+    z-index: 9998;
+    .opacity(.5);
+  }
+
+  .toggle-sidebar i {
+    color: #fff;
+  }
+
+  .sidebar {
+    overflow: auto;
+  }
+}
+
+
+
+/* ==========================================================================
+   Isotope
+   ========================================================================== */
+#isotope-filter {
+  text-align: center;
+
+  .active {
+    border-bottom: 1px solid @gray-dark;
+    color: @gray-dark;
+  }
+}
+
+.isotope {
+  .isotope-item {
+    &.col-lg-3,
+    &.col-md-3,
+    &.col-sm-3,
+    &.col-xs-3 {
+      margin-left: -1px;
+    }
+
+    .entry-inner {
+      margin-top: 30px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
+      background: #fff;
+      position: relative;
+      min-height: 270px;
+      overflow: hidden;
+      background: @gray-darker;
+
+      @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        min-height: 213px;
+      }
+
+      @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        min-height: 220px;
+      }
+
+
+    }
+
+    .entry-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      z-index: 1;
+
+      .entry-title {
+        margin: 0;
+        height: 100%;
+      }
+
+      .entry-title a {
+        font-size: @font-size-base;
+        color: #fff;
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 270px;
+        @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+          line-height: 213px;
+        }
+
+        @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+          line-height: 220px;
+        }
+      }
+    }
+
+    .entry-thumbnail {
+      position: absolute;
+      z-index: 2;
+
+      img {
+        max-width: 270px;
+        height: auto;
+        .transition(all .5s);
+        @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+          max-width: 213px;
+        }
+
+        @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+          max-width: 220px;
+        }
+
+        @media (max-width: @screen-xs-max) {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    &:hover .entry-thumbnail {
+      z-index: 0;
+    }
+  
+    @media (min-width: @screen-sm-min) {
+      &:hover .entry-thumbnail img {
+        max-width: 120%;
+        margin: -10%;
+        .opacity(.2);
+        .rotate(-5deg);
+        .transition(all .5s);
+      }
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+      &:hover .entry-thumbnail img {
+        max-width: 150%;
+        margin: -25%;
+      }
+    }
+  }
+}
+
+
+
+// Isotope Filtering
+// --------------------------------------------------
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+
+
+/* ==========================================================================
+   Posts
+   ========================================================================== */
+
+.hentry {
+  .single & {
+
+    header {
+      margin-bottom: 60px;
+    }
+
+    .entry-title {
+      margin: 0 0 30px;
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .entry-thumbnail {
+      margin-bottom: 60px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .entry-meta {
+      text-align: center;
+    }
+
+    .entry-content {
+
+      .wp-caption {
+        max-width: 100%;
+
+        img {
+          display: block;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+#comments {
+  border-top: 1px solid @gray-lighter;
+  margin: 50px 0 0;
+  padding: 60px 0 0;
+
+  > h3 {
+    margin: 0 0 60px;
+  }
+
+  .avatar {
+    margin-right: 30px;
+  }
+
+  > .alert {
+    margin-bottom: 0;
+  }
+}
+
+#respond {
+  border-top: 1px solid @gray-lighter;
+  margin: 50px 0 0;
+  padding: 60px 0 0;
+
+  > h3 {
+    margin: 0 0 15px;
+  }
+}
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.content-info {
+  background: @gray-lighter;
+  padding: 60px 0 120px;
+  font-size: @font-size-small;
+
+  .widget-title {
+    font-size: @font-size-small;
+    margin: 0;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+
+
+/* ==========================================================================
+   WordPress Generated Classes
+   See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+   ========================================================================== */
+
+.aligncenter { display: block; margin: 0 auto; }
+.alignleft { float: left; }
+.alignright { float: right; }
+figure.alignnone { margin-left: 0; margin-right: 0; }
+
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media (min-width: @screen-sm-min) { }
+
+@media (min-width: @screen-md-min) { }
+
+@media (min-width: @screen-lg-min) { }

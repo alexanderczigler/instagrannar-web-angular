@@ -1,15 +1,9 @@
 <div ng-controller="MainCtrl">
 
-  <div class="content">
+    <div ng-controller="MapCtrl" ng-include src="'partial/map/map.html'"></div>
 
-      <div ng-controller="HeaderCtrl" ng-include src="'partial/header/header.html'"></div>
+    <div ng-controller="PhotoGridCtrl" ng-include src="'partial/photoGrid/photoGrid.html'"></div>
 
-      <div ng-controller="ControlPanelCtrl" ng-include src="'partial/controlPanel/controlPanel.html'"></div>
-
-      <div ng-controller="PhotoGridCtrl" ng-include src="'partial/photoGrid/photoGrid.html'"></div>
-
-      <div ng-controller="FooterCtrl" ng-include src="'partial/footer/footer.html'"></div>
-
-  </div>
+    <div ng-controller="FooterCtrl" ng-include src="'partial/footer/footer.html'"></div>
 
 </div>
