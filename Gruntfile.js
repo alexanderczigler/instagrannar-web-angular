@@ -183,7 +183,8 @@ module.exports = function (grunt) {
           username: '<%= secret.username %>',
           password: '<%= secret.password %>',
           srcBasePath: 'dist/',
-          showProgress: true
+          showProgress: true,
+          createDirectories: true
         }
       }
     }

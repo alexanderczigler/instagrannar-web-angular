@@ -1,5 +1,6 @@
 dist/
 test/
+fonts/
 .idea
 bower_components
 node_modules
