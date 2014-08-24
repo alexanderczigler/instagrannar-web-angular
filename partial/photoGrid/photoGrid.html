@@ -1,6 +1,24 @@
-<blockquote data-ng-hide="!!grams.data && grams.data.length > 0">
+<blockquote data-ng-hide="!!grams.data">
   <p>
-    Inga bilder laddade! Prova att zooma ut eller flytta kartan.
+    Se vad som händer runtom dig! Använd kartan för att hitta de senaste bilderna på Instagram från just den platsen.
+  </p>
+</blockquote>
+
+<blockquote data-ng-show="!!grams.data && grams.data.length === 0">
+  <p>
+    Hittade inga bilder! Prova att zooma ut eller flytta kartan till ett annat område.
+  </p>
+</blockquote>
+
+<blockquote data-ng-show="!!grams.data && grams.data.length === 1">
+  <p>
+    Hittade en bild!<!-- postad {{grams.data[0].created_time}}-->
+  </p>
+</blockquote>
+
+<blockquote data-ng-show="!!grams.data && grams.data.length > 1">
+  <p>
+    Hittade {{grams.data.length}} bilder! <!--Den senaste skapades {{t(grams.data[0].created_time)}}-->
   </p>
 </blockquote>
 
