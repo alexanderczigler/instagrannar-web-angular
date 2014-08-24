@@ -1,75 +1,13 @@
+<blockquote data-ng-hide="!!grams.data && grams.data.length > 0">
+  <p>
+    Inga bilder laddade! Prova att zooma ut eller flytta kartan.
+  </p>
+</blockquote>
 
-  <div class="wrap" role="document">
-    <div class="container">
-      <div class="content">
-        
-        <main class="main" role="main">
-
-          <blockquote data-ng-hide="!!grams.data && grams.data.length > 0">
-            <p>
-              Inga bilder laddade! Prova att zooma ut eller flytta kartan.
-            </p>
-          </blockquote>
-
-          <div class="row">
-            <div class="isotope" style="position: relative;">
-              <div ng-repeat="gram in grams.data">
-                <photo instagram="gram"></photo>
-              </div>
-            </div>
-          </div>
-        </main>
-
-        <div class="overlay"></div>
-
-        <a href="#" class="toggle-sidebar"><i class="fa fa-bars"></i><i class="fa fa-close"></i></a>
-        <aside class="sidebar" role="complementary">
-          <section class="widget nav_menu-2 widget_nav_menu"><ul id="menu-main-navigation" class="menu"><li class="active menu-home"><a href="/zolio/">Home</a></li>
-            <li class="menu-sample-page"><a href="/zolio/?page_id=2">Sample Page</a></li>
-            <li class="menu-post-layout-1"><a href="/zolio/?p=49">Post Layout #1</a></li>
-            <li class="menu-post-layout-2"><a href="/zolio/?p=46">Post Layout #2</a></li>
-            <li class="menu-post-layout-3"><a href="/zolio/?p=43">Post Layout #3</a></li>
-          </ul></section>		<section class="widget recent-posts-2 widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
-          <li>
-            <a href="/zolio/?p=49">Holy Spilit</a>
-          </li>
-          <li>
-            <a href="/zolio/?p=46">iGravertical Screen Layers</a>
-          </li>
-          <li>
-            <a href="/zolio/?p=43">Flat Icons Brownie Theme</a>
-          </li>
-          <li>
-            <a href="/zolio/?p=40">Sigature UI Design</a>
-          </li>
-          <li>
-            <a href="/zolio/?p=37">Suggestive Logo</a>
-          </li>
-        </ul>
-        </section><section class="widget recent-comments-2 widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments">admin on <a href="/zolio/?p=11#comment-15">Setting UI</a></li><li class="recentcomments">admin on <a href="/zolio/?p=24#comment-14">Simple ikons set</a></li><li class="recentcomments">admin on <a href="/zolio/?p=28#comment-13">Downloading Button</a></li><li class="recentcomments">admin on <a href="/zolio/?p=37#comment-12">Suggestive Logo</a></li><li class="recentcomments">admin on <a href="/zolio/?p=40#comment-11">Sigature UI Design</a></li></ul></section><section class="widget archives-2 widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
-          <li><a href="/zolio/?m=201402">February 2014</a></li>
-        </ul>
-        </section><section class="widget categories-2 widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
-          <li class="cat-item cat-item-1"><a href="/zolio/?cat=1" title="View all posts filed under Graphic">Graphic</a>
-          </li>
-          <li class="cat-item cat-item-6"><a href="/zolio/?cat=6" title="View all posts filed under Illustration">Illustration</a>
-          </li>
-          <li class="cat-item cat-item-7"><a href="/zolio/?cat=7" title="View all posts filed under Motion">Motion</a>
-          </li>
-          <li class="cat-item cat-item-4"><a href="/zolio/?cat=4" title="View all posts filed under Photography">Photography</a>
-          </li>
-          <li class="cat-item cat-item-5"><a href="/zolio/?cat=5" title="View all posts filed under Typography">Typography</a>
-          </li>
-          <li class="cat-item cat-item-3"><a href="/zolio/?cat=3" title="View all posts filed under Website">Website</a>
-          </li>
-        </ul>
-        </section><section class="widget meta-2 widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
-          <li><a href="http://demo.zingtheme.com/zolio/wp-login.php">Log in</a></li>
-          <li><a href="/zolio/?feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
-          <li><a href="/zolio/?feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
-          <li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
-        </section>          </aside><!-- /.sidebar -->
-      </div><!-- /.content -->
+<div class="row">
+  <div class="isotope" style="position: relative;">
+    <div ng-repeat="gram in grams.data">
+      <photo instagram="gram"></photo>
     </div>
   </div>
-
+</div>

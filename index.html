@@ -50,10 +50,13 @@
   <script src="partial/photoGrid/photoGrid.js"></script>
   <script src="partial/pictureLoader/pictureLoader.js"></script>
   <script src="partial/map/map.js"></script>
+  <script src="partial/sideBar/sideBar.js"></script>
   <!-- Add New Partial JS Above -->
 
   <div ui-view>
+    <div ng-controller="MapCtrl" ng-include src="'partial/map/map.html'"></div>
     <div ng-controller="MainCtrl" ng-include src="'partial/main/main.html'"></div>
+    <div ng-controller="FooterCtrl" ng-include src="'partial/footer/footer.html'"></div>
   </div>
   
 </body>
