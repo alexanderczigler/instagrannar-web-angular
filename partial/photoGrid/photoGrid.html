@@ -2,22 +2,23 @@
   <div class="wrap" role="document">
     <div class="container">
       <div class="content">
+        
         <main class="main" role="main">
+
+          <blockquote data-ng-hide="!!grams.data && grams.data.length > 0">
+            <p>
+              Inga bilder laddade! Prova att zooma ut eller flytta kartan.
+            </p>
+          </blockquote>
+
           <div class="row">
-            <!--
-            <ul id="isotope-filter" class="list-inline">
-              <li><a class="" href="#" data-filter="*">All</a></li>
-              <li><a href="#" data-filter=".category-graphic">Graphic</a></li><li><a href="#" data-filter=".category-illustration">Illustration</a></li><li><a href="#" data-filter=".category-motion">Motion</a></li><li><a href="#" data-filter=".category-photography" class="active">Photography</a></li><li><a href="#" data-filter=".category-typography">Typography</a></li><li><a href="#" data-filter=".category-website">Website</a>
-            </li>
-            </ul>
-            -->
             <div class="isotope" style="position: relative;">
               <div ng-repeat="gram in grams.data">
                 <photo instagram="gram"></photo>
               </div>
             </div>
           </div>
-        </main><!-- /.main -->
+        </main>
 
         <div class="overlay"></div>
 
