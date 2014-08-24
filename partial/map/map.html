@@ -12,7 +12,9 @@
 
     <google-map center="map.center" draggable="true" zoom="map.zoom" options="mapOptions" events="map.events">
       <script type="text/ng-template" id="control.tpl.html">
-        <button data-ng-click="load(map.zoom)">Load</button>
+        <span class="picture-loader">
+          <button data-ng-click="load(map.zoom)" ng-disabled="buttonDisabled">Ladda bilder</button>
+        </span>
       </script>
       <map-control template='control.tpl.html' position="bottom-center" controller="PictureLoaderCtrl"></map-control>
       <circle center="map.center" radius="place.dst" visible="true" stroke="circleStroke"> </circle>
