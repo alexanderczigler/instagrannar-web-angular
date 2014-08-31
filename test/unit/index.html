@@ -12,12 +12,16 @@
   <!-- Livereload script for development only (stripped during dist build) -->
   <script src="http://localhost:35729/livereload.js"></script>
 
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
   <!-- JS from Bower components -->
   <script src="../../bower_components/less/dist/less-1.5.1.js"></script>
   <script src="../../bower_components/angular/angular.js"></script>
   <script src="../../bower_components/angular-resource/angular-resource.js"></script>
   <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="../../bower_components/moment/moment.js"></script>
+  <script src="../../bower_components/lodash/dist/lodash.min.js"></script>
+  <script src="../../bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
 
   <!-- Test libraries -->
   <script src="../../node_modules/mocha/mocha.js"></script>
@@ -36,6 +40,7 @@
   <!-- Service JS -->
   <script src="../../service/apiUrls.js"></script>
   <script src="../../service/mapsHelper.js"></script>
+  <script src="../../service/localizedContent.js"></script>
   <!-- Add New Service JS Above --> 
 
   <!-- Model JS -->
@@ -64,6 +69,7 @@
   <!-- Service Test JS -->
   <script src="service/apiUrls.js"></script>
   <script src="service/mapsHelper.js"></script>
+  <script src="service/localizedContent.js"></script>
   <!-- Add New Service Test JS Above --> 
 
   <!-- Model Test JS -->

@@ -1,6 +1,7 @@
-angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $rootScope, mapsHelper, $timeout) {
+angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $rootScope, mapsHelper, $timeout, localizedContent) {
   'use strict';
 
+  $scope.localizedContent = localizedContent;
   $scope.place = $rootScope.place;
   $scope.buttonDisabled = false;
 

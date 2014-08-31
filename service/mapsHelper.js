@@ -2,6 +2,14 @@ angular.module('ingr-web').service('mapsHelper', function () {
   'use strict';
 
   var mapsHelper = {
+    currentPosition: {
+        latitude: 0.0,
+        longitude: 0.0,
+        zoom: 14
+    },
+    getCurrentPosition: function() {
+        return this.currentPosition;
+    },
     zoomRadiusMap: {
     1: 5000,
     2: 5000,

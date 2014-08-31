@@ -1,5 +1,7 @@
-angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, mapsHelper) {
+angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, mapsHelper, localizedContent) {
   'use strict';
+
+  $scope.localizedContent = localizedContent;
 
   $scope.map = {
     center: {
@@ -74,11 +76,21 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
         }
       },
       function(error) {
-        console.log('Error: lookup current position', error);
+        if (error.message === 'User denied Geolocation'){
+          return;
+        }
+        mapsHelper.locationLookupFailure = true;
       });
 
     // Café Pascal
     $scope.map.center.latitude = 59.34199;
     $scope.map.center.longitude = 18.051995;
   };
+
+  $scope.$watch(function() {
+    return mapsHelper.getCurrentPosition();
+  }, function(p) {
+    console.log('mhUpdate', p);
+  });
+  
 });

@@ -2,6 +2,9 @@
   <p>
     Se vad som händer runtom dig! Använd kartan för att hitta de senaste bilderna på Instagram från just den platsen.
   </p>
+  <p ng-show="locationLookupFailure">
+    {{localizedContent.read('locationLookupErrorMessage')}}
+  </p>
 </blockquote>
 
 <blockquote data-ng-show="!!grams.data && grams.data.length === 0">

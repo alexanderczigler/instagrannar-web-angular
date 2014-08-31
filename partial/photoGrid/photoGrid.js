@@ -1,5 +1,8 @@
-angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http) {
+angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http, mapsHelper, localizedContent) {
   'use strict';
+
+  $scope.locationLookupFailure = false;
+  $scope.localizedContent = localizedContent;
 
   $scope.grams = {};
 
@@ -30,4 +33,11 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
       $scope.getPictures(place.lat, place.lng, place.dst);
     }
   }, true);
+
+  $scope.$watch(function() {
+    return mapsHelper.locationLookupFailure;
+  }, function(f) {
+    $scope.locationLookupFailure = f;
+  });
+
 });
