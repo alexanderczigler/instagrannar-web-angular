@@ -40,6 +40,12 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   $scope.place.lat = $scope.map.center.latitude;
   $scope.place.dst = 350;
 
+  $rootScope.$watch('place', function(place) {
+    console.log('meow', place);
+    $scope.map.center.latitude = place.lat;
+    $scope.map.center.longitude = place.lng;
+  }, true);
+
   $scope.load = function() {
     $rootScope.safeApply(function () {
       $rootScope.place.reload = true;

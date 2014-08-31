@@ -10,6 +10,7 @@ angular.module('ingr-web').service('mapsHelper', function () {
     getCurrentPosition: function() {
         return this.currentPosition;
     },
+    locationLookupFailure: false,
     zoomRadiusMap: {
     1: 5000,
     2: 5000,
