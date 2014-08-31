@@ -13,18 +13,6 @@
   </p>
 </blockquote>
 
-<blockquote data-ng-show="!!grams.data && grams.data.length === 1">
-  <p>
-    Hittade en bild!<!-- postad {{grams.data[0].created_time}}-->
-  </p>
-</blockquote>
-
-<blockquote data-ng-show="!!grams.data && grams.data.length > 1">
-  <p>
-    Hittade {{grams.data.length}} bilder! <!--Den senaste skapades {{t(grams.data[0].created_time)}}-->
-  </p>
-</blockquote>
-
 <div class="row">
   <div class="isotope" style="position: relative;">
     <div ng-repeat="gram in grams.data">
