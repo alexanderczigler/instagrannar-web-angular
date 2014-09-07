@@ -2,6 +2,11 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   'use strict';
 
   $scope.localizedContent = localizedContent;
+  $scope.place = $rootScope.place;
+
+  $scope.place.lng = 0.0;
+  $scope.place.lat = 0.0;
+  $scope.place.dst = 350;
 
   $scope.map = {
     center: {
@@ -19,53 +24,24 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
           $scope.place.dst = mapsHelper.mapZoomToDistance(map.zoom);
         });
       }
+    },
+    options: {
+      mapTypeControl: false,
+      streetViewControl: false,
+      scrollwheel: false
+    },
+    circleStroke: {
+      color: "#303030",
+      weight: 0.2,
+      opacity: 0.5
     }
   };
-
-  $scope.mapOptions = {
-    mapTypeControl: false,
-    streetViewControl: false,
-    scrollwheel: false
-  };
-
-  $scope.circleStroke= {
-    color: "#303030",
-    weight: 0.2,
-    opacity: 0.5
-  };
-
-  $scope.place = $rootScope.place;
-
-  $scope.place.lng = $scope.map.center.longitude;
-  $scope.place.lat = $scope.map.center.latitude;
-  $scope.place.dst = 350;
-
-  $rootScope.$watch('place', function(place) {
-    console.log('meow', place);
-    $scope.map.center.latitude = place.lat;
-    $scope.map.center.longitude = place.lng;
-  }, true);
 
   $scope.load = function() {
     $rootScope.safeApply(function () {
       $rootScope.place.reload = true;
     });
   };
-
-  $scope.$watch('place', function() {
-    if (!!$rootScope.place.changed) {
-      $rootScope.place.changed = false;
-      $scope.load();
-    }
-  }, true);
-
-  $scope.$watch('map', function() {
-    if (!!$scope.map.center) {
-      if ($scope.map.center.latitude === 0.0 && $scope.map.center.longitude === 0.0) {
-        $scope.setCoords();
-      }
-    }
-  });
 
   $scope.setCoords = function() {
     if (!!$scope.map.center.latitude && $scope.map.center.latitude !== 0.0) {
@@ -92,6 +68,31 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
     $scope.map.center.latitude = 59.34199;
     $scope.map.center.longitude = 18.051995;
   };
+
+  /*
+   * Watches.
+   */
+
+  $scope.$watch('place', function() {
+    if (!!$rootScope.place.changed) {
+      $rootScope.place.changed = false;
+      $scope.load();
+    }
+  }, true);
+
+  $scope.$watch('map', function() {
+    if (!!$scope.map.center) {
+      if ($scope.map.center.latitude === 0.0 && $scope.map.center.longitude === 0.0) {
+        $scope.setCoords();
+      }
+    }
+  });
+
+  $rootScope.$watch('place', function(place) {
+    console.log('meow', place);
+    $scope.map.center.latitude = place.lat;
+    $scope.map.center.longitude = place.lng;
+  }, true);
 
   $scope.$watch(function() {
     return mapsHelper.getCurrentPosition();

@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <google-map center="map.center" draggable="true" zoom="map.zoom" options="mapOptions" events="map.events">
+    <google-map center="map.center" draggable="true" zoom="map.zoom" options="map.options" events="map.events">
       <script type="text/ng-template" 
       <script type="text/ng-template" id="control.tpl.html">
         <span class="picture-loader">
@@ -18,7 +18,7 @@
         </span>
       </script>
       <map-control template='control.tpl.html' position="bottom-center" controller="PictureLoaderCtrl"></map-control>
-      <circle center="map.center" radius="place.dst" visible="true" stroke="circleStroke"> </circle>
+      <circle center="map.center" radius="place.dst" visible="true" stroke="map.circleStroke"> </circle>
     </google-map>
 
   </header>
