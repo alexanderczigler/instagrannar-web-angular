@@ -8,6 +8,14 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   $scope.place.lat = 0.0;
   $scope.place.dst = 350;
 
+  function updateLocationFromMap(map) {
+    $rootScope.safeApply(function () {
+      $scope.place.lat = map.center.k;
+      $scope.place.lng = map.center.B;
+      $scope.place.dst = mapsHelper.mapZoomToDistance(map.zoom);
+    });
+  }
+
   $scope.map = {
     center: {
       longitude: 0.0,
@@ -16,13 +24,10 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
     zoom: 14,
     events: {
       tilesloaded: function (map) {
-        $rootScope.safeApply(function () {
-          // Event fired each time the map changes.
-          // We make sure the place variable is updated.
-          $scope.place.lat = map.center.k;
-          $scope.place.lng = map.center.B;
-          $scope.place.dst = mapsHelper.mapZoomToDistance(map.zoom);
-        });
+        updateLocationFromMap(map);
+      },
+      dragend: function (map) {
+        updateLocationFromMap(map);
       }
     },
     options: {
@@ -31,7 +36,7 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
       scrollwheel: false
     },
     circleStroke: {
-      color: "#303030",
+      color: '#303030',
       weight: 0.2,
       opacity: 0.5
     }
@@ -89,7 +94,6 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   });
 
   $rootScope.$watch('place', function(place) {
-    console.log('meow', place);
     $scope.map.center.latitude = place.lat;
     $scope.map.center.longitude = place.lng;
   }, true);
