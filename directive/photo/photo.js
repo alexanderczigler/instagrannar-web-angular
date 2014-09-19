@@ -1,5 +1,6 @@
 angular.module('ingr-web').directive('photo', function () {
   'use strict';
+/* global moment */
 
   return {
     restrict: 'E',
@@ -9,12 +10,15 @@ angular.module('ingr-web').directive('photo', function () {
     },
     templateUrl: 'directive/photo/photo.html',
     link: function (scope, element, attrs, fn) {
-
-      /*
-       * Converts UNIX time to a readable timestamp with date.
-       */
       scope.t = function (time) {
-        return new Date(time * 1000);
+        var day = moment.unix(time);
+        var m = moment(day, 'YYYYMMDD').fromNow();
+        return m;
+      };
+
+      scope.modal = false;
+      scope.show = function() {
+        scope.modal = !scope.modal;
       };
 
     }
