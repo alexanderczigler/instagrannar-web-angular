@@ -2,25 +2,11 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
   'use strict';
 
   $scope.mapsHelper = mapsHelper;
-  $scope.currentPosition = mapsHelper.currentPosition;
 
   $scope.locationLookupFailure = false;
   $scope.localizedContent = localizedContent;
 
   $scope.grams = {};
-
-  $scope.location = {};
-  $scope.doSearch = function() {
-    if($scope.location === '') {
-      console.log('Directive did not update the location property in parent controller.');
-    } else {
-      console.log('Yay. Location: ', $scope.currentPosition);
-      $rootScope.safeApply(function () {
-        $rootScope.place.lat = $scope.currentPosition.latitude;
-        $rootScope.place.lng = $scope.currentPosition.longitude;
-    });
-    }
-  };
 
   $scope.getPictures = function (lat, lng, dst) {
     var byLocation = apiUrls.byLocation;
