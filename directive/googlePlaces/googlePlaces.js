@@ -14,10 +14,27 @@ angular.module('ingr-web').directive('googlePlaces', function (mapsHelper, $root
         google.maps.event.addListener(autocomplete, 'place_changed', function() {
             var place = autocomplete.getPlace();
             $rootScope.safeApply(function () {
+
+              if (!place.geometry){
+                return;
+              }
+
               mapsHelper.currentPosition.latitude = place.geometry.location.lat();
               mapsHelper.currentPosition.longitude = place.geometry.location.lng();
               console.log('values set', mapsHelper.currentPosition.latitude);
+
+              if($scope.location === '') {
+                console.log('Directive did not update the location property in parent controller.');
+              } else {
+                console.log('Yay. Location: ', $scope.currentPosition);
+                $rootScope.safeApply(function () {
+                  $rootScope.place.lat = $scope.currentPosition.latitude;
+                  $rootScope.place.lng = $scope.currentPosition.longitude;
+                });
+              }
             });
+
+
             
         });
 
@@ -31,7 +48,7 @@ angular.module('ingr-web').directive('googlePlaces', function (mapsHelper, $root
             $rootScope.safeApply(function () {
               $rootScope.place.lat = $scope.currentPosition.latitude;
               $rootScope.place.lng = $scope.currentPosition.longitude;
-          });
+            });
           }
         };
     }
