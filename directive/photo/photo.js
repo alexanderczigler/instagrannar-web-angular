@@ -17,7 +17,7 @@ angular.module('ingr-web').directive('photo', function () {
       };
 
       scope.modal = false;
-      scope.show = function() {
+      scope.toggleModal = function() {
         scope.modal = !scope.modal;
       };
 
