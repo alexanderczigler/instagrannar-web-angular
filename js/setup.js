@@ -20,6 +20,8 @@ angular.module('ingr-web').run(function ($rootScope) {
     reload: false
   };
 
+  $rootScope.selectedInstagram = {};
+
   $rootScope.safeApply = function (fn) {
     var phase = $rootScope.$$phase;
     if (phase === '$apply' || phase === '$digest') {

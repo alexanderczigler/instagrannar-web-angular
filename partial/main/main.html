@@ -5,7 +5,10 @@
         
         <main class="main" role="main">
 
-          <div ng-controller="PhotoGridCtrl" ng-include src="'partial/photoGrid/photoGrid.html'"></div>
+          <google-places location=location></google-places>
+
+          <div data-ng-show="displayGrid" ng-controller="PhotoGridCtrl" ng-include src="'partial/photoGrid/photoGrid.html'"></div>
+          <div data-ng-hide="displayGrid" ng-controller="PhotoViewCtrl" ng-include src="'partial/photoView/photoView.html'"></div>
           
         </main>
 

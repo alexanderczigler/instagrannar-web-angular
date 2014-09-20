@@ -1,0 +1,21 @@
+<div>
+	<p>
+		<a data-ng-click="close()">Tillbaka</a>
+	</p>
+	<h2>
+    {{instagram.caption.text}}
+  </h2>
+  <h3>
+    Posted by <a target="_blank" href="http://instagram.com/{{instagram.user.username}}">@{{instagram.user.username}}</a> about {{t(instagram.created_time)}}
+  </h3>
+  <div>
+    <a target="_blank" href="{{instagram.link}}">
+      <img data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}"/>
+    </a>
+  </div>
+  <!-- here for future reference
+  <p>
+    {{instagram}}
+  </p>
+  -->
+</div>

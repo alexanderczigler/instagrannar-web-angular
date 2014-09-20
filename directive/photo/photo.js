@@ -1,4 +1,4 @@
-angular.module('ingr-web').directive('photo', function () {
+angular.module('ingr-web').directive('photo', function ($rootScope) {
   'use strict';
 /* global moment */
 
@@ -18,7 +18,10 @@ angular.module('ingr-web').directive('photo', function () {
 
       scope.modal = false;
       scope.toggleModal = function() {
-        scope.modal = !scope.modal;
+        console.log('tog', scope.instagram);
+        $rootScope.safeApply(function() {
+          $rootScope.selectedInstagram = angular.copy(scope.instagram);
+        });
       };
 
     }

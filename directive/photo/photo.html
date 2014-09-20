@@ -14,14 +14,16 @@
     </header>
   </div>
   <div class="photo-modal" data-ng-show="modal">
-    <h1>
-      {{instagram.caption.text}}
-    </h1>
     <h2>
-      Posted by @{{instagram.user.username}} about {{t(instagram.created_time)}}
+      {{instagram.caption.text}}
     </h2>
+    <h3>
+      Posted by <a target="_blank" href="http://instagram.com/{{instagram.user.username}}">@{{instagram.user.username}}</a> about {{t(instagram.created_time)}}
+    </h3>
     <div>
-      <img data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}"/>
+      <a target="_blank" href="{{instagram.link}}">
+        <img data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}"/>
+      </a>
     </div>
     <p>
       <a data-ng-click="toggleModal()">St&auml;ng</a>
