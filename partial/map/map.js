@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, mapsHelper, localizedContent) {
+angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, mapsHelper, localizedContent, zoom) {
   'use strict';
 
   $scope.localizedContent = localizedContent;
@@ -12,7 +12,7 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
     $rootScope.safeApply(function () {
       $scope.place.lat = map.center.k;
       $scope.place.lng = map.center.B;
-      $scope.place.dst = mapsHelper.mapZoomToDistance(map.zoom);
+      $scope.place.dst = zoom.radius(map.zoom);
     });
   }
 

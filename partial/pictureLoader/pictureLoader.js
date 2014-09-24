@@ -1,14 +1,14 @@
-angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $rootScope, mapsHelper, $timeout, localizedContent) {
+angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $rootScope, mapsHelper, $timeout, localizedContent, zoom) {
   'use strict';
 
   $scope.localizedContent = localizedContent;
   $scope.place = $rootScope.place;
   $scope.buttonDisabled = false;
 
-  $scope.load = function(zoom) {
+  $scope.load = function(zoomLevel) {
     $scope.buttonDisabled = true;
     $rootScope.safeApply(function () {
-      $scope.place.dst = mapsHelper.mapZoomToDistance(zoom);
+      $scope.place.dst = zoom.radius(zoomLevel);
       $rootScope.place.changed = true;
     });
   };
