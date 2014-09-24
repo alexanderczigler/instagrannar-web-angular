@@ -173,12 +173,26 @@ module.exports = function (grunt) {
     },
     secret: grunt.file.readJSON('secret.json'),
     sftp: {
-      stage: {
+      production: {
         files: {
-          "./": "dist/**"
+          './': 'dist/**'
         },
         options: {
-          path: '/var/www/ingr',
+          path: '/var/www/www.instagrannar.se',
+          host: '<%= secret.host %>',
+          username: '<%= secret.username %>',
+          password: '<%= secret.password %>',
+          srcBasePath: 'dist/',
+          showProgress: true,
+          createDirectories: true
+        }
+      },
+      stage: {
+        files: {
+          './': 'dist/**'
+        },
+        options: {
+          path: '/var/www/stage.instagrannar.se',
           host: '<%= secret.host %>',
           username: '<%= secret.username %>',
           password: '<%= secret.password %>',
@@ -210,6 +224,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build',['clean:before','less','dom_munger:readcss','dom_munger:readscripts','ngtemplates','cssmin','concat','ngmin','uglify','copy:main', 'copy:fonts','dom_munger:removecss','dom_munger:addcss','dom_munger:removescripts','dom_munger:addscript','htmlmin','imagemin','clean:after']);
   grunt.registerTask('test',['jshint', 'mocha']);
   grunt.registerTask('server', ['connect']);
-  grunt.registerTask('deploy', ['build', 'sftp']);
+  grunt.registerTask('release', ['build', 'sftp:production']);
+  grunt.registerTask('stage', ['build', 'sftp:stage']);
   grunt.registerTask('default', ['test', 'server', 'copy:fonts', 'watch']);
 };
