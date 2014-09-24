@@ -34,10 +34,6 @@ angular.module('ingr-web').directive('googlePlaces', function (mapsHelper, $root
             console.log('Directive did not update the location property in parent controller.');
           } else {
             console.log('Yay. Location: ', $scope.currentPosition);
-            /*$rootScope.safeApply(function () {
-              $rootScope.place.lat = $scope.currentPosition.latitude;
-              $rootScope.place.lng = $scope.currentPosition.longitude;
-            });*/
           }
         };
     }

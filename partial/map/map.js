@@ -2,20 +2,14 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   'use strict';
 
   $scope.localizedContent = localizedContent;
-  $scope.place = $rootScope.place;
-
-  $scope.place.lng = 0.0;
-  $scope.place.lat = 0.0;
-  $scope.place.dst = 350;
+  $scope.viewport = viewport;
+  $scope.zoom = zoom;
 
   /*
    * Used by callbacks from the map control.
    */
   function updateLocationFromMap(map) {
     $rootScope.safeApply(function () {
-      //$scope.place.lat = map.center.k;
-      //$scope.place.lng = map.center.B;
-      //$scope.place.dst = zoom.radius(map.zoom);
       viewport.latitude = map.center.k;
       viewport.longitude = map.center.B;
       viewport.zoomLevel = map.zoom;
@@ -48,12 +42,6 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
     }
   };
 
-  $scope.load = function() {
-    $rootScope.safeApply(function () {
-      $rootScope.loadPictures = true;
-    });
-  };
-
   $scope.setCoords = function() {
     if (!!$scope.map.center.latitude && $scope.map.center.latitude !== 0.0) {
       return;
@@ -84,13 +72,6 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
    * Watches.
    */
 
-  $scope.$watch('place', function() {
-    if (!!$rootScope.place.changed) {
-      $rootScope.place.changed = false;
-      $scope.load();
-    }
-  }, true);
-
   $scope.$watch('map', function() {
     if (!!$scope.map.center) {
       if ($scope.map.center.latitude === 0.0 && $scope.map.center.longitude === 0.0) {
@@ -98,11 +79,6 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
       }
     }
   });
-
-  /*$rootScope.$watch('place', function(place) {
-    $scope.map.center.latitude = place.lat;
-    $scope.map.center.longitude = place.lng;
-  }, true);*/
 
   $scope.$watch(function() {
     return mapsHelper.getCurrentPosition();

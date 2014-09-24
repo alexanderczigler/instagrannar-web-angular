@@ -14,13 +14,6 @@ angular.module('ingr-web').run(function ($rootScope) {
   'use strict';
 
   $rootScope.loadPictures = false;
-  $rootScope.place = {
-    lng: 18.051995,
-    lat: 59.34199,
-    dst: 500,
-    reload: false
-  };
-
   $rootScope.selectedInstagram = {};
 
   $rootScope.safeApply = function (fn) {
