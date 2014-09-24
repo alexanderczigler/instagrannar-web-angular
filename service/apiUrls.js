@@ -4,7 +4,7 @@ angular.module('ingr-web').service('apiUrls', function () {
   var apiUrls = {
     //base: "http://localhost:3000/",
     base: 'http://instagdev2.cloudapp.net:3000/',
-    byLocation: 'pictures/{lng}/{lat}/{dst}'
+    byLocation: 'pictures/{longitude}/{latitude}/{zoomlevel}'
   };
 
   return apiUrls;

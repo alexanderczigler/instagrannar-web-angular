@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, mapsHelper, localizedContent, zoom) {
+angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, mapsHelper, localizedContent, viewport, zoom) {
   'use strict';
 
   $scope.localizedContent = localizedContent;
@@ -8,20 +8,26 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   $scope.place.lat = 0.0;
   $scope.place.dst = 350;
 
+  /*
+   * Used by callbacks from the map control.
+   */
   function updateLocationFromMap(map) {
     $rootScope.safeApply(function () {
       $scope.place.lat = map.center.k;
       $scope.place.lng = map.center.B;
       $scope.place.dst = zoom.radius(map.zoom);
+      viewport.latitude = map.center.k;
+      viewport.longitude = map.center.B;
+      viewport.zoomLevel = map.zoom;
     });
   }
 
   $scope.map = {
     center: {
-      longitude: 0.0,
-      latitude: 0.0
+      latitude: viewport.latitude,
+      longitude: viewport.longitude
     },
-    zoom: 14,
+    zoom: viewport.zoomLevel,
     events: {
       tilesloaded: function (map) {
         updateLocationFromMap(map);
@@ -103,5 +109,9 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   }, function(p) {
     console.log('mhUpdate', p);
   });
+
+  $scope.$watch(function() { return viewport; }, function (viewport) {
+    //console.log('viewport!', viewport);
+  }, true);
   
 });

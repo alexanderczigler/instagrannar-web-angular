@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http, mapsHelper, localizedContent) {
+angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http, mapsHelper, localizedContent, viewport) {
   'use strict';
 
   $scope.mapsHelper = mapsHelper;
@@ -13,9 +13,9 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
 
   $scope.getPictures = function (lat, lng, dst) {
     var byLocation = apiUrls.byLocation;
-    byLocation = byLocation.replace('{lat}', lat);
-    byLocation = byLocation.replace('{lng}', lng);
-    byLocation = byLocation.replace('{dst}', dst);
+    byLocation = byLocation.replace('{latitude}', viewport.latitude);
+    byLocation = byLocation.replace('{longitude}', viewport.longitude);
+    byLocation = byLocation.replace('{zoomlevel}', viewport.zoomLevel);
 
     var url = apiUrls.base + byLocation;
 
