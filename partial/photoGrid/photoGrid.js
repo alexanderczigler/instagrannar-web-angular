@@ -8,6 +8,9 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
 
   $scope.grams = {};
 
+  $scope.error = false;
+  $scope.errorDescription = '';
+
   $scope.getPictures = function (lat, lng, dst) {
     var byLocation = apiUrls.byLocation;
     byLocation = byLocation.replace('{lat}', lat);
@@ -19,9 +22,12 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
     $http({method: 'GET', url: url}).
       success(function(data, status, headers, config) {
         $scope.grams = data;
+        $scope.error = false;
       }).
       error(function(data, status, headers, config) {
         console.log('Unable to load photos.', data);
+        $scope.error = true;
+        $scope.errorDescription = localizedContent.read('pictureLoadFailureErrorMessage');
       });
   };
 
