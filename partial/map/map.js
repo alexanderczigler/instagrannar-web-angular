@@ -42,44 +42,6 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
     }
   };
 
-  $scope.setCoords = function() {
-    if (!!$scope.map.center.latitude && $scope.map.center.latitude !== 0.0) {
-      return;
-    }
-
-    mapsHelper.lookupCurrentLocation(function(data) {
-        if (!!data.coords) {
-          $rootScope.safeApply(function() {
-            $scope.map.center.latitude = data.coords.latitude;
-            $scope.map.center.longitude = data.coords.longitude;
-            return;
-          });
-        }
-      },
-      function(error) {
-        if (error.message === 'User denied Geolocation'){
-          return;
-        }
-        mapsHelper.locationLookupFailure = true;
-      });
-
-    // Café Pascal
-    $scope.map.center.latitude = 59.34199;
-    $scope.map.center.longitude = 18.051995;
-  };
-
-  /*
-   * Watches.
-   */
-
-  $scope.$watch('map', function() {
-    if (!!$scope.map.center) {
-      if ($scope.map.center.latitude === 0.0 && $scope.map.center.longitude === 0.0) {
-        $scope.setCoords();
-      }
-    }
-  });
-
   $scope.$watch(function() {
     return mapsHelper.getCurrentPosition();
   }, function(p) {

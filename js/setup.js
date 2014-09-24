@@ -10,11 +10,13 @@ angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) 
 
 });
 
-angular.module('ingr-web').run(function ($rootScope) {
+angular.module('ingr-web').run(function ($rootScope, location) {
   'use strict';
 
   $rootScope.loadPictures = false;
   $rootScope.selectedInstagram = {};
+
+  location.setViewPort();
 
   $rootScope.safeApply = function (fn) {
     var phase = $rootScope.$$phase;

@@ -12,7 +12,7 @@ angular.module('ingr-web').service('mapsHelper', function (viewport) {
     },
     locationLookupFailure: false,
     lookupCurrentLocation: function(successCallback, errorCallback) {
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+      //navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     }
   };
 
