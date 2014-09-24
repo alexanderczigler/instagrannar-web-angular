@@ -1,4 +1,4 @@
-angular.module('ingr-web').service('mapsHelper', function () {
+angular.module('ingr-web').service('mapsHelper', function (viewport) {
   'use strict';
 
   var mapsHelper = {

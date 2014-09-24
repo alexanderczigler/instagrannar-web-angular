@@ -13,9 +13,9 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
    */
   function updateLocationFromMap(map) {
     $rootScope.safeApply(function () {
-      $scope.place.lat = map.center.k;
-      $scope.place.lng = map.center.B;
-      $scope.place.dst = zoom.radius(map.zoom);
+      //$scope.place.lat = map.center.k;
+      //$scope.place.lng = map.center.B;
+      //$scope.place.dst = zoom.radius(map.zoom);
       viewport.latitude = map.center.k;
       viewport.longitude = map.center.B;
       viewport.zoomLevel = map.zoom;
@@ -50,7 +50,7 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
 
   $scope.load = function() {
     $rootScope.safeApply(function () {
-      $rootScope.place.reload = true;
+      $rootScope.loadPictures = true;
     });
   };
 
@@ -99,10 +99,10 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
     }
   });
 
-  $rootScope.$watch('place', function(place) {
+  /*$rootScope.$watch('place', function(place) {
     $scope.map.center.latitude = place.lat;
     $scope.map.center.longitude = place.lng;
-  }, true);
+  }, true);*/
 
   $scope.$watch(function() {
     return mapsHelper.getCurrentPosition();
@@ -111,7 +111,8 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   });
 
   $scope.$watch(function() { return viewport; }, function (viewport) {
-    //console.log('viewport!', viewport);
+    $scope.map.center.latitude = viewport.latitude;
+    $scope.map.center.longitude = viewport.longitude;
   }, true);
   
 });

@@ -6,13 +6,14 @@ angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) 
   /* Add New Routes Above */
   
   // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise('/');
 
 });
 
 angular.module('ingr-web').run(function ($rootScope) {
   'use strict';
 
+  $rootScope.loadPictures = false;
   $rootScope.place = {
     lng: 18.051995,
     lat: 59.34199,

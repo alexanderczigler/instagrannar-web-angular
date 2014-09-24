@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http, mapsHelper, localizedContent, viewport) {
+angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http, mapsHelper, localizedContent, viewport, zoom) {
   'use strict';
 
   $scope.mapsHelper = mapsHelper;
@@ -11,11 +11,11 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
   $scope.error = false;
   $scope.errorDescription = '';
 
-  $scope.getPictures = function (lat, lng, dst) {
+  $scope.getPictures = function () {
     var byLocation = apiUrls.byLocation;
     byLocation = byLocation.replace('{latitude}', viewport.latitude);
     byLocation = byLocation.replace('{longitude}', viewport.longitude);
-    byLocation = byLocation.replace('{zoomlevel}', viewport.zoomLevel);
+    byLocation = byLocation.replace('{zoomlevel}', zoom.radius(viewport.zoomLevel));
 
     var url = apiUrls.base + byLocation;
 
@@ -35,10 +35,13 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
     return new Date(time * 1000);
   };
 
-  $rootScope.$watch('place', function(place) {
-    if (!!$rootScope.place.reload) {
-      $rootScope.place.reload = false;
-      $scope.getPictures(place.lat, place.lng, place.dst);
+  /*
+   * Watch for the signal to load pictures from Instagram.
+   */
+  $rootScope.$watch('loadPictures', function(place) {
+    if (!!$rootScope.loadPictures) {
+      $rootScope.loadPictures = false;
+      $scope.getPictures();
     }
   }, true);
 
