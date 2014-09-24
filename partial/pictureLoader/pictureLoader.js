@@ -6,18 +6,19 @@ angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $ro
   $scope.buttonDisabled = false;
 
   $scope.load = function(zoom) {
-    $scope.brieflyDisableLoadButton();
+    $scope.buttonDisabled = true;
     $rootScope.safeApply(function () {
       $scope.place.dst = mapsHelper.mapZoomToDistance(zoom);
       $rootScope.place.changed = true;
     });
   };
 
-  $scope.brieflyDisableLoadButton = function() {
-    $scope.buttonDisabled = true;
-    $timeout(function() {
-      $scope.buttonDisabled = false;
-    }, 2000);
-  };
+  $rootScope.$watch('place', function(place) {
+    if (!$rootScope.place.reload) {
+      $timeout(function() {
+        $scope.buttonDisabled = false;
+      }, 2000);
+    }
+  }, true);
 
 });
