@@ -18,7 +18,6 @@ angular.module('ingr-web').directive('photo', function ($rootScope) {
 
       scope.modal = false;
       scope.toggleModal = function() {
-        console.log('tog', scope.instagram);
         $rootScope.safeApply(function() {
           $rootScope.selectedInstagram = angular.copy(scope.instagram);
         });

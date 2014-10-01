@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http, mapsHelper, localizedContent, viewport, zoom) {
+angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http, mapsHelper, localizedContent, viewport, zoom, ad) {
   'use strict';
 
   $scope.mapsHelper = mapsHelper;
@@ -11,6 +11,13 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
   $scope.error = false;
   $scope.errorDescription = '';
 
+  function randomPosition(max) {
+    var r = Math.random();
+    var q = r * max;
+    var position = Math.floor(q);
+    return position;
+  }
+
   $scope.getPictures = function () {
     var byLocation = apiUrls.byLocation;
     byLocation = byLocation.replace('{latitude}', viewport.latitude);
@@ -22,6 +29,10 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
     $http({method: 'GET', url: url}).
       success(function(data, status, headers, config) {
         $scope.grams = data;
+        if (!!data && data.data.length > 0) {
+          var adPosition = randomPosition(data.data.length);
+          data.data.splice(adPosition, 0, ad.getAd());
+        }
         $scope.error = false;
       }).
       error(function(data, status, headers, config) {
