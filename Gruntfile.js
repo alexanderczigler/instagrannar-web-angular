@@ -94,8 +94,8 @@ module.exports = function (grunt) {
       },
       removescripts: {
         options:{
-          remove:'script[data-remove!="exclude"]',
-          append:{selector:'head',html:'<script src="app.full.min.js"></script>'}
+          remove:'script[data-remove!="exclude"]'//,
+          //append:{selector:'head',html:'<script src="app.full.min.js"></script>'}
         },
         src:'dist/index.html'
       }, 
