@@ -9,15 +9,14 @@ angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $ro
     $scope.buttonDisabled = true;
     $rootScope.safeApply(function () {
       $rootScope.loadPictures = true;
-    });
-  };
-
-  $rootScope.$watch('loadPictures', function(l) {
-    if (!l) {
       $timeout(function() {
         $scope.buttonDisabled = false;
       }, 2000);
-    }
+    });
+  };
+
+  $rootScope.$watch('loadPictures', function() {
+    // :'('
   }, true);
 
 });
