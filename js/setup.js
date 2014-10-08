@@ -3,7 +3,8 @@ angular.module('ingr-web', ['ui.router', 'ngResource', 'google-maps']);
 angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) {
   'use strict';
 
-  /* Add New Routes Above */
+  $stateProvider.state('annonsering', {    url: '/annonsering',    templateUrl: 'partial/annonsering/annonsering.html'  });
+	/* Add New Routes Above */
   
   // For any unmatched url, redirect to /
   $urlRouterProvider.otherwise('/');
