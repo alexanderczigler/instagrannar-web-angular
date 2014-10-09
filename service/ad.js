@@ -10,7 +10,8 @@ angular.module('ingr-web').service('ad', function () {
         caption: {
           text: 'Vill du synas här? Hör av dig till oss för att veta mer om annonsering på instagrannar!'
         },
-        link: 'http://instagrannar.se/annonsering',
+        link: '/#/annonsering',
+        target: 'same',
         images: {
           standard_resolution: {
             url: 'img/black.jpg'
