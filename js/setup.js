@@ -4,6 +4,7 @@ angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) 
   'use strict';
 
   $stateProvider.state('annonsering', {    url: '/annonsering',    templateUrl: 'partial/annonsering/annonsering.html'  });
+	$stateProvider.state('legal', {    url: '/legal',    templateUrl: 'partial/legal/legal.html'  });
 	/* Add New Routes Above */
   
   // For any unmatched url, redirect to /
