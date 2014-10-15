@@ -25,7 +25,7 @@ angular.module('ingr-web').run(function ($rootScope, $timeout, location) {
   $rootScope.selectedInstagram = {};
 
   location.setViewPort();
-  
+
   $rootScope.safeApply = function (fn) {
     var phase = $rootScope.$$phase;
     if (phase === '$apply' || phase === '$digest') {
