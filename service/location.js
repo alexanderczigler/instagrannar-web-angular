@@ -38,7 +38,7 @@ angular.module('ingr-web').service('location', function (viewport, $timeout, $ro
           console.log('Other location error');
           this.hasAsked = true;
         });
-      }, 1000);
+      }, 100);
     }
   };
 
