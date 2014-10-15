@@ -9,14 +9,11 @@ angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $ro
     $scope.buttonDisabled = true;
     $rootScope.safeApply(function () {
       $rootScope.loadPictures = true;
+      $rootScope.selectedInstagram = {};
       $timeout(function() {
         $scope.buttonDisabled = false;
       }, 2000);
     });
   };
-
-  $rootScope.$watch('loadPictures', function() {
-    // :'('
-  }, true);
 
 });
