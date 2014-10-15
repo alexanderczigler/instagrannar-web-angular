@@ -2,20 +2,15 @@
 	<h1>
 		<a data-ng-click="close()">Tillbaka</a>
 	</h1>
-	<h2>
-    {{instagram.caption.text}}
-  </h2>
-  <h3>
-    Posted by <a target="_blank" href="http://instagram.com/{{instagram.user.username}}">@{{instagram.user.username}}</a> about {{t(instagram.created_time)}}
+	<h3>
+    Postad av <a target="_blank" href="http://instagram.com/{{instagram.user.username}}">@{{instagram.user.username}}</a> about {{t(instagram.created_time)}}
   </h3>
   <div>
     <a target="_blank" href="{{instagram.link}}">
       <img data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}" width="640" height="640"/>
     </a>
   </div>
-  <!-- here for future reference
   <p>
-    {{instagram}}
+    {{instagram.caption.text}}
   </p>
-  -->
 </div>
