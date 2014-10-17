@@ -42,14 +42,7 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
     }
   };
 
-  $scope.$watch(function() {
-    return mapsHelper.getCurrentPosition();
-  }, function(p) {
-    console.log('mhUpdate', p);
-  }, true);
-
   $scope.$watch(function() { return viewport; }, function (viewport) {
-    console.log('viewport update');
     $scope.map.center.latitude = viewport.latitude;
     $scope.map.center.longitude = viewport.longitude;
   }, true);

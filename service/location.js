@@ -14,15 +14,11 @@ angular.module('ingr-web').service('location', function (viewport, $timeout, $ro
       if (!navigator.geolocation) {
         return;
       }
-      console.log('Get location!');
       $timeout(function () {
         navigator.geolocation.getCurrentPosition(function(data) {
-          console.log('Get location success');
           if (!!data.coords) {
-            console.log('location data', data);
             this.hasAsked = true;
             this.lookupSuccess = true;
-            console.log('viewport update from lookup');
             $rootScope.safeApply(function () {
               viewport.latitude = data.coords.latitude;
               viewport.longitude = data.coords.longitude;
@@ -35,7 +31,7 @@ angular.module('ingr-web').service('location', function (viewport, $timeout, $ro
             this.hasAsked = true;
             return;
           }
-          console.log('Other location error');
+          console.log('Error', 'Location lookup error.');
           this.hasAsked = true;
         });
       }, 100);

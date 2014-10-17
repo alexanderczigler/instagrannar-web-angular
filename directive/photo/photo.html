@@ -13,25 +13,4 @@
       </h2>
     </header>
   </div>
-  <div class="photo-modal" data-ng-show="modal">
-    <h2>
-      {{instagram.caption.text}}
-    </h2>
-    <h3>
-      Posted by <a target="_blank" href="http://instagram.com/{{instagram.user.username}}">@{{instagram.user.username}}</a> about {{t(instagram.created_time)}}
-    </h3>
-    <div>
-      <a target="_blank" href="{{instagram.link}}">
-        <img class="preview-image" data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}"/>
-      </a>
-    </div>
-    <p>
-      <a data-ng-click="toggleModal()">St&auml;ng</a>
-    </p>
-    <!-- here for future reference
-    <p>
-      {{instagram}}
-    </p>
-    -->
-  </div>
 </article>

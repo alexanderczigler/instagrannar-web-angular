@@ -30,7 +30,7 @@ angular.module('ingr-web').service('zoom', function () {
     },
     level: function(radius) {
       this.levelRadiusMap.map(function (lr) {
-        console.log(lr);
+        // console.log(lr);
       });
     }
   };
