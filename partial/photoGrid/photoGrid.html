@@ -1,31 +1,52 @@
-<blockquote data-ng-hide="!!grams.data || error">
-  <p>
-    {{localizedContent.read('introParagraph')}}
-  </p>
-  <!--
-  <p ng-show="locationLookupFailure">
-    {{localizedContent.read('locationLookupErrorMessage')}}
-  </p>
-  -->
-</blockquote>
+<div ng-controller="MapCtrl" ng-include src="'partial/map/map.html'"></div>
+    
+<div class="wrap" role="document">
+  <div class="container">
+    <div class="content">
+      
+      <main class="main" role="main">
 
-<blockquote data-ng-show="error">
-  <p class="error">
-    {{localizedContent.read('generalErrorIntro')}}<br/>
-    <strong>{{localizedContent.read('description')}}:</strong> {{errorDescription}}
-  </p>
-</blockquote>
+        <google-places location=location></google-places>
 
-<blockquote data-ng-show="!!grams.data && grams.data.length === 0">
-  <p>
-    {{localizedContent.read('noPicturesFound')}}
-  </p>
-</blockquote>
+        <blockquote data-ng-hide="!!grams.data || error">
+          <p>
+            {{localizedContent.read('introParagraph')}}
+          </p>
+          <!--
+          <p ng-show="locationLookupFailure">
+            {{localizedContent.read('locationLookupErrorMessage')}}
+          </p>
+          -->
+        </blockquote>
 
-<div class="row">
-  <div class="isotope" style="position: relative;">
-    <div ng-repeat="gram in grams.data">
-      <photo instagram="gram"></photo>
+        <blockquote data-ng-show="error">
+          <p class="error">
+            {{localizedContent.read('generalErrorIntro')}}<br/>
+            <strong>{{localizedContent.read('description')}}:</strong> {{errorDescription}}
+          </p>
+        </blockquote>
+
+        <blockquote data-ng-show="!!grams.data && grams.data.length === 0">
+          <p>
+            {{localizedContent.read('noPicturesFound')}}
+          </p>
+        </blockquote>
+
+        <div class="row">
+          <div class="isotope" style="position: relative;">
+            <div ng-repeat="gram in grams.data">
+              <photo instagram="gram"></photo>
+            </div>
+          </div>
+        </div>
+        
+      </main>
+
+      <div class="overlay"></div>
+      <div ng-controller="SideBarCtrl" ng-include src="'partial/sideBar/sideBar.html'"></div>
+      
     </div>
   </div>
 </div>
+
+<div ng-controller="FooterCtrl" ng-include src="'partial/footer/footer.html'"></div>

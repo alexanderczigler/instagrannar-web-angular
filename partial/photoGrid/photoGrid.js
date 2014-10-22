@@ -50,6 +50,7 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
    * Watch for the signal to load pictures from Instagram.
    */
   $rootScope.$watch('loadPictures', function(place) {
+    console.log('loadpictures händer nu');
     if (!!$rootScope.loadPictures) {
       $rootScope.loadPictures = false;
       $scope.getPictures();
@@ -59,7 +60,9 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
   $scope.$watch(function() {
     return mapsHelper.locationLookupFailure;
   }, function(f) {
-    $scope.locationLookupFailure = f;
+    if (!!f){
+      $scope.locationLookupFailure = f;
+    }
   });
 
 });

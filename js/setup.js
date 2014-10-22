@@ -11,10 +11,20 @@ angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) 
     url: '/legal',
     templateUrl: 'partial/legal/legal.html'
   });
+  $stateProvider.state('image', {
+    url: '/image',
+    controller: 'PhotoViewCtrl',
+    templateUrl: 'partial/photoView/photoView.html'
+  });
+  $stateProvider.state('search', {
+    url: '/search',
+    controller: 'PhotoGridCtrl',
+    templateUrl: 'partial/photoGrid/photoGrid.html'
+  });
 	/* Add New Routes Above */
   
   // For any unmatched url, redirect to /
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/search');
 
 });
 

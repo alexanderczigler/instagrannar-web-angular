@@ -3,13 +3,6 @@ angular.module('ingr-web').controller('PhotoViewCtrl', function ($scope, $rootSc
 
   $scope.instagram = {};
 
-  $scope.close = function() {
-  	$rootScope.safeApply(function() {
-  		$scope.instagram = {};
-  		$rootScope.selectedInstagram = {};
-  	});
-  };
-
   $scope.t = function (time) {
     var day = moment.unix(time);
     var m = moment(day, 'YYYYMMDD').fromNow();
@@ -17,6 +10,9 @@ angular.module('ingr-web').controller('PhotoViewCtrl', function ($scope, $rootSc
   };
 
   $rootScope.$watch('selectedInstagram', function(si) {
+    if (!si) {
+      return;
+    }
   	if (si.link) {
 			$scope.instagram = $rootScope.selectedInstagram;
   	}

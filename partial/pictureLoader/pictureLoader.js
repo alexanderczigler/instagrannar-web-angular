@@ -6,6 +6,7 @@ angular.module('ingr-web').controller('PictureLoaderCtrl', function ($scope, $ro
   $scope.buttonDisabled = false;
 
   $scope.load = function(zoomLevel) {
+    console.log('load');
     $scope.buttonDisabled = true;
     $rootScope.safeApply(function () {
       $rootScope.loadPictures = true;

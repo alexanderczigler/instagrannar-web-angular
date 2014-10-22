@@ -1,16 +1,33 @@
-<div>
-	<h1>
-		<a data-ng-click="close()">Tillbaka</a>
-	</h1>
-	<h3>
-    Postad av <a target="_blank" href="http://instagram.com/{{instagram.user.username}}">@{{instagram.user.username}}</a>  {{t(instagram.created_time)}}
-  </h3>
-  <div>
-    <a target="_blank" href="{{instagram.link}}">
-      <img data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}" width="640" height="640"/>
-    </a>
+<div ng-controller="HeaderCtrl" ng-include src="'partial/header/header.html'"></div>
+
+<div class="wrap" role="document">
+  <div class="container">
+    <div class="content">
+      
+      <main class="main" role="main">
+
+        <div>
+          <a href="#/grid">meow</a>
+          <h3>
+            Postad av <a target="_blank" href="http://instagram.com/{{instagram.user.username}}">@{{instagram.user.username}}</a>  {{t(instagram.created_time)}}
+          </h3>
+          <div>
+            <a target="_blank" href="{{instagram.link}}">
+              <img data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}" width="640" height="640"/>
+            </a>
+          </div>
+          <p>
+            {{instagram.caption.text}}
+          </p>
+        </div>
+        
+      </main>
+
+      <div class="overlay"></div>
+      <div ng-controller="SideBarCtrl" ng-include src="'partial/sideBar/sideBar.html'"></div>
+      
+    </div>
   </div>
-  <p>
-    {{instagram.caption.text}}
-  </p>
 </div>
+
+<div ng-controller="FooterCtrl" ng-include src="'partial/footer/footer.html'"></div>
