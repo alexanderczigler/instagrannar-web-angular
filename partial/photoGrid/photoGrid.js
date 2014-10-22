@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, $http, mapsHelper, localizedContent, viewport, zoom, ad, instagram) {
+angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, mapsHelper, localizedContent, viewport, zoom, ad, instagram) {
   'use strict';
 
   $scope.mapsHelper = mapsHelper;
