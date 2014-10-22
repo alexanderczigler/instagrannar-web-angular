@@ -18,6 +18,12 @@ angular.module('ingr-web').service('ad', function () {
           }
         }
       };
+    },
+    randomPosition: function (max) {
+      var r = Math.random();
+      var q = r * max;
+      var position = Math.floor(q);
+      return position;
     }
   };
 

@@ -12,7 +12,7 @@ angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) 
     templateUrl: 'partial/legal/legal.html'
   });
   $stateProvider.state('image', {
-    url: '/image',
+    url: '/image/:id',
     controller: 'PhotoViewCtrl',
     templateUrl: 'partial/photoView/photoView.html'
   });
