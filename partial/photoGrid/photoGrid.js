@@ -45,6 +45,12 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
     if (!!images){
       $scope.grams = images;
     }
-  });
+
+    /*if (!images.data) {
+      $rootScope.safeApply(function () {
+        $rootScope.loadPictures = true;
+      });
+    }*/
+  }, true);
 
 });

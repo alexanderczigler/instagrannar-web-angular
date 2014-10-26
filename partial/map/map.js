@@ -8,11 +8,14 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   /*
    * Used by callbacks from the map control.
    */
-  function updateLocationFromMap(map) {
+  function updateLocationFromMap(map, load) {
     $rootScope.safeApply(function () {
       viewport.latitude = map.center.k;
       viewport.longitude = map.center.B;
       viewport.zoomLevel = map.zoom;
+      if (!!load) {
+        $rootScope.loadPictures = true;
+      }
     });
   }
 
@@ -24,10 +27,10 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
     zoom: viewport.zoomLevel,
     events: {
       tilesloaded: function (map) {
-        updateLocationFromMap(map);
+        updateLocationFromMap(map, false);
       },
       dragend: function (map) {
-        updateLocationFromMap(map);
+        updateLocationFromMap(map, true);
       }
     },
     options: {

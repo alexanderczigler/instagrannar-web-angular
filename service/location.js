@@ -22,10 +22,14 @@ angular.module('ingr-web').service('location', function (viewport, $timeout, $ro
             $rootScope.safeApply(function () {
               viewport.latitude = data.coords.latitude;
               viewport.longitude = data.coords.longitude;
+              $rootScope.loadPictures = true;
             });
           }
         },
         function (error) {
+          $rootScope.safeApply(function () {
+            $rootScope.loadPictures = true;
+          });
           if (error.message === 'User denied Geolocation'){
             console.log('User denied location');
             this.hasAsked = true;
