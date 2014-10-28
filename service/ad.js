@@ -4,6 +4,7 @@ angular.module('ingr-web').service('ad', function () {
   var ad = {
     getAd: function() {
       return {
+        id: 'ad',
         user: {
           username: 'instagrannar'
         },
