@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('PhotoViewCtrl', function ($scope, $rootScope, $stateParams, images) {
+angular.module('ingr-web').controller('PhotoViewCtrl', function ($scope, $rootScope, $stateParams, images, $anchorScroll, $timeout, $window) {
   'use strict';
 
   /* global moment */
@@ -6,7 +6,11 @@ angular.module('ingr-web').controller('PhotoViewCtrl', function ($scope, $rootSc
   $scope.instagram = {};
 
   if (!!$stateParams.id) {
-    console.log('a', images.data);
+    $anchorScroll();
+    if (!images.data.data) {
+      $window.location = '/#/search';
+      return;
+    }
     images.data.data.map(function (i) {
       if (i.id === $stateParams.id) {
         $scope.instagram = i;
