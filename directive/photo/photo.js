@@ -1,7 +1,7 @@
 angular.module('ingr-web').directive('photo', function ($rootScope) {
   'use strict';
 
-/* global moment */
+  /* global moment */
 
   return {
     restrict: 'E',

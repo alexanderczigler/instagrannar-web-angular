@@ -1,6 +1,8 @@
 angular.module('ingr-web').controller('PhotoViewCtrl', function ($scope, $rootScope, $stateParams, images) {
   'use strict';
 
+  /* global moment */
+
   $scope.instagram = {};
 
   if (!!$stateParams.id) {
@@ -13,6 +15,7 @@ angular.module('ingr-web').controller('PhotoViewCtrl', function ($scope, $rootSc
   }
 
   $scope.t = function (time) {
+    moment.locale('sv', function () {});
     var day = moment.unix(time);
     var m = moment(day, 'YYYYMMDD').fromNow();
     return m;
