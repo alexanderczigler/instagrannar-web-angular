@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, mapsHelper, localizedContent, viewport, zoom, ad, instagram, images) {
+angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, apiUrls, mapsHelper, localizedContent, viewport, zoom, ad, instagram, images, $cookies) {
   'use strict';
 
   $scope.mapsHelper = mapsHelper;
@@ -10,6 +10,13 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
 
   $scope.error = false;
   $scope.errorDescription = '';
+
+  $scope.oauthUrl = apiUrls.oauth.base.replace('{client_id}', apiUrls.oauth.client_id).replace('{redirect_uri}', apiUrls.oauth.redirect_uri);
+  $scope.hasAuthToken = false;
+
+  if (!!$cookies.instagrannarat){
+    $scope.hasAuthToken = true;
+  }
 
   $scope.t = function (time) {
     return new Date(time * 1000);
@@ -45,12 +52,6 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
     if (!!images){
       $scope.grams = images;
     }
-
-    /*if (!images.data) {
-      $rootScope.safeApply(function () {
-        $rootScope.loadPictures = true;
-      });
-    }*/
   }, true);
 
 });

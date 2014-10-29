@@ -1,4 +1,4 @@
-angular.module('ingr-web', ['ui.router', 'ngResource', 'google-maps']);
+angular.module('ingr-web', ['ui.router', 'ngResource', 'google-maps', 'ngCookies']);
 
 angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) {
   'use strict';

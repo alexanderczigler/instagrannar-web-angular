@@ -1,4 +1,4 @@
-angular.module('ingr-web').service('instagram', function ($http, viewport, zoom, apiUrls, images, ad) {
+angular.module('ingr-web').service('instagram', function ($http, viewport, zoom, apiUrls, images, ad, $cookies) {
   'use strict';
 
   var instagram = {
@@ -9,6 +9,15 @@ angular.module('ingr-web').service('instagram', function ($http, viewport, zoom,
       byLocation = byLocation.replace('{zoomlevel}', zoom.radius(viewport.zoomLevel));
 
       var url = apiUrls.base + byLocation;
+      var access_token = '';
+
+      url += '/';
+      if (!!$cookies.instagrannarat){
+        url += $cookies.instagrannarat;
+      }
+      else {
+        url += '-';
+      }
 
       $http({method: 'GET', url: url}).
         success(function(data, status, headers, config) {
