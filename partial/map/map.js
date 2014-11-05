@@ -31,6 +31,9 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
       },
       dragend: function (map) {
         updateLocationFromMap(map, true);
+      },
+      zoom_changed: function (map) {
+        updateLocationFromMap(map, true);
       }
     },
     options: {
