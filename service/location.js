@@ -1,4 +1,4 @@
-angular.module('ingr-web').service('location', function (viewport, $timeout, $rootScope) {
+angular.module('ingr-web').service('location', function (viewport, $timeout, $rootScope, $location) {
   'use strict';
 
   var location = {
@@ -12,6 +12,12 @@ angular.module('ingr-web').service('location', function (viewport, $timeout, $ro
         return;
       }
       if (!navigator.geolocation) {
+        return;
+      }
+      if (!!$location.search().latitude && !!$location.search().longitude && $location.search().zoom){
+        viewport.latitude = $location.search().latitude;
+        viewport.longitude = $location.search().longitude;
+        viewport.zoomLevel = parseInt($location.search().zoom);
         return;
       }
       $timeout(function () {
