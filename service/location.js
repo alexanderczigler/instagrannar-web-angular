@@ -14,10 +14,13 @@ angular.module('ingr-web').service('location', function (viewport, $timeout, $ro
       if (!navigator.geolocation) {
         return;
       }
-      if (!!$location.search().latitude && !!$location.search().longitude && $location.search().zoom){
-        viewport.latitude = $location.search().latitude;
-        viewport.longitude = $location.search().longitude;
-        viewport.zoomLevel = parseInt($location.search().zoom);
+      if (!!$location.search().latitude && !!$location.search().longitude && $location.search().zoom) {
+        //$rootScope.safeApply(function () {
+          viewport.latitude = $location.search().latitude;
+          viewport.longitude = $location.search().longitude;
+          viewport.zoomLevel = parseInt($location.search().zoom);
+          $rootScope.loadPictures = true;
+        //});
         return;
       }
       $timeout(function () {
