@@ -8,14 +8,6 @@
       
       <main class="main" role="main">
 
-        <blockquote data-ng-hide="hasAuthToken">
-          <p>
-            <strong>
-              <a style="color: red;" href="{{oauthUrl}}">För bättre prestanda kan du logga in med ditt Instagram-konto här</a>
-            </strong>
-          </p>
-        </blockquote>
-
         <google-places location=location></google-places>
         
         <blockquote data-ng-hide="!!grams.data || error">
