@@ -1,5 +1,6 @@
 angular.module('ingr-web').directive('googlePlaces', function (mapsHelper, $rootScope, viewport, locationSearch) {
   'use strict';
+  
   /* global google */
 
   return {

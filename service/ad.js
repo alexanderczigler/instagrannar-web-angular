@@ -9,7 +9,7 @@ angular.module('ingr-web').service('ad', function () {
           username: 'instagrannar'
         },
         caption: {
-          text: 'Vill du synas här? Hör av dig till oss för att veta mer om annonsering på instagrannar!'
+          text: 'Vill du synas här? Hör av dig till oss för att veta mer om annonsering på Instagrannar!'
         },
         link: '/#/annonsering',
         target: 'same',
