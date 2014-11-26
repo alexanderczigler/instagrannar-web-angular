@@ -10,7 +10,7 @@ div.login-modal {
   position: fixed;
   width: 450px;
   left: 50%;
-  margin-left: -200px;
+  margin-left: -225px;
   top: 20%;
   background-color: white;
   z-index: 555;
@@ -30,4 +30,19 @@ div.login-modal p.welcome {
 div.login-modal span.continue {
   font-size: 10px;
   padding-top: 13px;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  div.login-modal {
+    position: fixed;
+    width: 240px;
+    left: 50%;
+    margin-left: -120px;
+    top: 20%;
+    background-color: white;
+    z-index: 555;
+    border-radius: 0.4em;
+    padding: 20px;
+  }
 }
