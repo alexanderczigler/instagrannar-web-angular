@@ -31,6 +31,30 @@ angular.module('ingr-web').service('instagram', function ($http, viewport, zoom,
         error(function(data, status, headers, config) {
           errorCallback(data, status, headers, config);
         });
+    },
+    getPicture: function(id, successCallback, errorCallback) {
+      var byId = apiUrls.byId;
+      byId = byId.replace('{id}', id);
+      
+      var url = apiUrls.base + byId;
+      var access_token = '';
+
+      url += '/';
+      if (!!$cookies.instagrannarat){
+        url += $cookies.instagrannarat;
+      }
+      else {
+        url += '-';
+      }
+
+      $http({method: 'GET', url: url}).
+        success(function(data, status, headers, config) {
+          images.data[id] = data.data;
+          successCallback(data, status, headers, config);
+        }).
+        error(function(data, status, headers, config) {
+          errorCallback(data, status, headers, config);
+        });
     }
   };
 

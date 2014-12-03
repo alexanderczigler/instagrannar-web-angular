@@ -24,6 +24,9 @@ angular.module('ingr-web').service('location', function (viewport, $timeout, $ro
       $timeout(function () {
         navigator.geolocation.getCurrentPosition(function(data) {
           if (!!data.coords) {
+            if (!this){
+              return;
+            }
             this.hasAsked = true;
             this.lookupSuccess = true;
             $rootScope.safeApply(function () {
