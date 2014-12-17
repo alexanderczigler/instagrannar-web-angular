@@ -10,6 +10,13 @@ angular.module('ingr-web').service('environment', function ($location) {
     },
     isProd: function() {
       return !this.isDev() && !this.isStage();
+    },
+    url: function() {
+      var port = '';
+      if ($location.port() !== 80){
+        port = ':' + $location.port();
+      }
+      return 'http://' + $location.host() + port;
     }
   };
 

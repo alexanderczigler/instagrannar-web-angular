@@ -1,9 +1,11 @@
-angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, mapsHelper, localizedContent, viewport, zoom) {
+angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, mapsHelper, localizedContent, viewport, zoom, environment) {
   'use strict';
 
   $scope.localizedContent = localizedContent;
   $scope.viewport = viewport;
   $scope.zoom = zoom;
+
+  $scope.url = environment.url();
 
   /*
    * Used by callbacks from the map control.
