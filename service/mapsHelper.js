@@ -5,7 +5,7 @@ angular.module('ingr-web').service('mapsHelper', function (viewport) {
     currentPosition: {
         latitude: 0.0,
         longitude: 0.0,
-        zoom: 14
+        zoom: viewport.defaultZoomLevel
     },
     getCurrentPosition: function() {
         return this.currentPosition;
