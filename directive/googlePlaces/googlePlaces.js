@@ -20,9 +20,11 @@ angular.module('ingr-web').directive('googlePlaces', function (mapsHelper, $root
             if (!place.geometry){
               return;
             }
+            console.log('du har sökt');
+            console.log(place.geometry.location);
             viewport.latitude = place.geometry.location.lat();
             viewport.longitude = place.geometry.location.lng();
-            viewport.zoomLevel = 14;
+            viewport.zoomLevel = viewport.defaultZoomLevel;
             $rootScope.loadPictures = true;
           });
         });
