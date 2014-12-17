@@ -11,7 +11,7 @@ angular.module('ingr-web').controller('MapCtrl', function ($scope, $rootScope, m
   function updateLocationFromMap(map, load) {
     $rootScope.safeApply(function () {
       viewport.latitude = map.center.k;
-      viewport.longitude = map.center.B;
+      viewport.longitude = map.center.D;
       viewport.zoomLevel = map.zoom;
       if (!!load) {
         $rootScope.loadPictures = true;
