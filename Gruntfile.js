@@ -204,7 +204,7 @@ module.exports = function (grunt) {
       }
     },
     'sftp-deploy': {
-      build: {
+      stage: {
         auth: {
           host: 'instagrannar.se',
           port: 22,
@@ -243,6 +243,6 @@ module.exports = function (grunt) {
   grunt.registerTask('test',['jshint', 'mocha']);
   grunt.registerTask('server', ['connect']);
   grunt.registerTask('release', ['build', 'sftp:production']);
-  grunt.registerTask('stage', ['build', 'sftp:stage']);
+  grunt.registerTask('stage', ['build', 'sftp-deploy:stage']);
   grunt.registerTask('default', ['test', 'server', 'copy:fonts', 'watch']);
 };
