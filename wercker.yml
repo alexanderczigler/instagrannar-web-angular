@@ -3,6 +3,7 @@ build:
   steps:
     - npm-install
     - script:
-        name: install bower
+        name: grunt build
         code: |
+          sudo npm install -g grunt-cli
           grunt build
