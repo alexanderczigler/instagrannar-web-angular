@@ -202,6 +202,22 @@ module.exports = function (grunt) {
           createDirectories: true
         }
       }
+    },
+    'sftp-deploy': {
+      build: {
+        auth: {
+          host: 'instagrannar.se',
+          port: 22,
+          authKey: 'key1'
+        },
+        //cache: 'sftpCache.json',
+        src: 'dist',
+        dest: '/var/www/stage.instagrannar.se',
+        //exclusions: ['**/.DS_Store', '/path/to/source/folder/**/Thumbs.db', 'dist/tmp'],
+        //serverSep: '/',
+        concurrency: 1,
+        progress: true
+      }
     }
   });
 
@@ -221,6 +237,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha');
   grunt.loadNpmTasks('grunt-ssh');
+  grunt.loadNpmTasks('grunt-sftp-deploy');
 
   grunt.registerTask('build',['clean:before','less','dom_munger:readcss','dom_munger:readscripts','ngtemplates','cssmin','concat','ngmin','uglify','copy:main', 'copy:fonts','dom_munger:removecss','dom_munger:addcss','dom_munger:removescripts','dom_munger:addscript','htmlmin','imagemin','clean:after']);
   grunt.registerTask('test',['jshint', 'mocha']);
