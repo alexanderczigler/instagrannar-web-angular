@@ -3,16 +3,9 @@ box: wercker/nodejs
 build:
   # The steps that will be executed on build
   steps:
+    - npm-install
     - script:
         name: install bower
-        code: sudo npm install -g bower
-    - npm-install
-    - bower-install
-    
-    # A custom script step, name value is used in the UI
-    # and the code value contains the command that get executed
-    - script:
-        name: echo nodejs information
         code: |
-          echo "node version $(node -v) running"
-          echo "npm version $(npm -v) running"
+          sudo npm install -g bower
+          sudo bower install
