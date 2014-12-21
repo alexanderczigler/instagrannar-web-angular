@@ -1,11 +1,8 @@
 box: wercker/nodejs
-# Build definition
 build:
-  # The steps that will be executed on build
   steps:
     - npm-install
     - script:
         name: install bower
         code: |
-          sudo npm install -g bower
-          sudo bower install
+          grunt build
