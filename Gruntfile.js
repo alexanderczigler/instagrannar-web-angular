@@ -172,37 +172,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    secret: grunt.file.readJSON('secret.json'),
-    sftp: {
-      production: {
-        files: {
-          './': 'dist/**'
-        },
-        options: {
-          path: '/var/www/www.instagrannar.se',
-          host: '<%= secret.host %>',
-          username: '<%= secret.username %>',
-          password: '<%= secret.password %>',
-          srcBasePath: 'dist/',
-          showProgress: true,
-          createDirectories: true
-        }
-      },
-      stage: {
-        files: {
-          './': 'dist/**'
-        },
-        options: {
-          path: '/var/www/stage.instagrannar.se',
-          host: '<%= secret.host %>',
-          username: '<%= secret.username %>',
-          password: '<%= secret.password %>',
-          srcBasePath: 'dist/',
-          showProgress: true,
-          createDirectories: true
-        }
-      }
-    },
     'sftp-deploy': {
       stage: {
         auth: {
@@ -210,11 +179,8 @@ module.exports = function (grunt) {
           port: 22,
           authKey: 'key1'
         },
-        //cache: 'sftpCache.json',
         src: 'dist',
         dest: '/var/www/stage.instagrannar.se',
-        //exclusions: ['**/.DS_Store', '/path/to/source/folder/**/Thumbs.db', 'dist/tmp'],
-        //serverSep: '/',
         concurrency: 1,
         progress: true
       }
