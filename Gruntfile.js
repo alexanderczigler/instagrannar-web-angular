@@ -177,7 +177,7 @@ module.exports = function (grunt) {
         auth: {
           host: 'instagrannar.se',
           port: 22,
-          authKey: 'key1'
+          authKey: 'sftp-deploy'
         },
         src: 'dist',
         dest: '/var/www/stage.instagrannar.se',
