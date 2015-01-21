@@ -1,4 +1,4 @@
-angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, $location, apiUrls, mapsHelper, localizedContent, viewport, zoom, ad, instagram, images, $cookies, suggestedLocations) {
+angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootScope, $location, apiUrls, mapsHelper, localizedContent, viewport, zoom, ad, instagram, images, $cookies, suggestedLocations, $timeout) {
   'use strict';
 
   $scope.mapsHelper = mapsHelper;
@@ -35,6 +35,9 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
         $scope.error = true;
         $scope.errorDescription = localizedContent.read('pictureLoadFailureErrorMessage');
       });
+      $timeout(function () {
+        $rootScope.loadPictures = true;
+      }, 60000);
     }
   }, true);
 
