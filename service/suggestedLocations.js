@@ -65,8 +65,13 @@ angular.module('ingr-web').service('suggestedLocations', function () {
       var r = Math.random();
       var q = r * this.locations.length;
       var position = Math.floor(q);
+      if (this.locations[position].name === this.previousSuggestion) {
+        return this.randomSuggestion();
+      }
+      this.previousSuggestion = this.locations[position].name;
       return this.locations[position];
-    }
+    },
+    previousSuggestion: ''
   };
 
   return suggestedLocations;
