@@ -35,7 +35,7 @@ angular.module('ingr-web').service('suggestedLocations', function () {
         name: 'Lhasa, Tibet',
         latitude: 29.653609850935965,
         longitude: 91.13863603149413,
-        caption: "Spana in vad som händer i Lhasa!",
+        caption: "Kolla in vad som händer i Lhasa!",
         zoomLevel: 14
       },
       {
