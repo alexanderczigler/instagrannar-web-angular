@@ -18,6 +18,8 @@ angular.module('ingr-web').controller('PhotoGridCtrl', function ($scope, $rootSc
     $scope.hasAuthToken = true;
   }
 
+  var meowmeow;
+
   $scope.t = function (time) {
     return new Date(time * 1000);
   };
