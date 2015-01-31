@@ -16,7 +16,7 @@ angular.module('ingr-web').service('environment', function ($location) {
       if ($location.port() !== 80){
         port = ':' + $location.port();
       }
-      return 'http://' + $location.host() + port;
+      return 'http://' + $location.host() + port + '/#/search';
     }
   };
 

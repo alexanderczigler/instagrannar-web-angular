@@ -23,7 +23,7 @@ angular.module('ingr-web').config(function ($stateProvider, $urlRouterProvider) 
   });
 	/* Add New Routes Above */
   
-  // For any unmatched url, redirect to /
+  // For any unmatched url, redirect to /search
   $urlRouterProvider.otherwise('/search');
 
 });
