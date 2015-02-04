@@ -1,13 +1,19 @@
 angular.module('ingr-web').service('instagram', function ($http, viewport, zoom, apiUrls, images, ad, $cookies) {
   'use strict';
-
+  
   var instagram = {
     getPictures: function(successCallback, errorCallback) {
       var byLocation = apiUrls.byLocation;
       byLocation = byLocation.replace('{latitude}', viewport.latitude);
       byLocation = byLocation.replace('{longitude}', viewport.longitude);
       byLocation = byLocation.replace('{zoomlevel}', zoom.radius(viewport.zoomLevel));
-
+      
+      var min = '2014-08-15T21:00:00.000+01:00';
+      var max = '2014-08-15T23:30:00.000+01:00';
+      
+      byLocation = byLocation.replace('{minTs}', Date.parse(min)/1000);
+      byLocation = byLocation.replace('{maxTs}', Date.parse(max)/1000);
+      
       var url = apiUrls.base + byLocation;
       var access_token = '';
 

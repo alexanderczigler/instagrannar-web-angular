@@ -3,9 +3,9 @@ angular.module('ingr-web').service('apiUrls', function (environment) {
 
   if (environment.isDev()) {
     return {
-      byLocation: 'pictures/{longitude}/{latitude}/{zoomlevel}',
+      byLocation: 'pictures?lng={longitude}&lat={latitude}&dst={zoomlevel}&max_ts={maxTs}&min_ts={minTs}',
       byId: 'pictures/{id}',
-      base: 'http://www.instagrannar.se:3000/',
+      base: 'http://localhost:3000/',
       oauth: {
         base: 'https://instagram.com/oauth/authorize/?client_id={client_id}&redirect_uri={redirect_uri}&response_type=token',
         client_id: '99ae0c29782c49c7af438178b4e81cfb',
@@ -15,7 +15,7 @@ angular.module('ingr-web').service('apiUrls', function (environment) {
   }
   else if (environment.isStage()) {
     return {
-      byLocation: 'pictures/{longitude}/{latitude}/{zoomlevel}',
+      byLocation: 'pictures?lng={longitude}&lat={latitude}&dst={zoomlevel}&max_ts={maxTs}&min_ts={minTs}',
       byId: 'pictures/{id}',
       base: 'http://stage.instagrannar.se:3000/',
       oauth: {
@@ -27,7 +27,7 @@ angular.module('ingr-web').service('apiUrls', function (environment) {
   }
   else {
     return {
-      byLocation: 'pictures/{longitude}/{latitude}/{zoomlevel}',
+      byLocation: 'pictures?lng={longitude}&lat={latitude}&dst={zoomlevel}&max_ts={maxTs}&min_ts={minTs}',
       byId: 'pictures/{id}',
       base: 'http://instagrannar.se:3000/',
       oauth: {
