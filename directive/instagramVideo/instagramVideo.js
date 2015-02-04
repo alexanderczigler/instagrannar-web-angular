@@ -12,8 +12,8 @@ angular.module('ingr-web').directive('instagramVideo', function ($compile) {
     link: function (scope, element, attrs, fn) {
 
       // Create and compile video tag.
-      var videoTag = '<video autoplay="true" loop="true" src="{videoUrl}">{content}</video>';
-      var content = '<img src="{photoUrl}" />';
+      var videoTag = '<video width="640" height="640" autoplay="true" loop="true" src="{videoUrl}">{content}</video>';
+      var content = '<img src="{photoUrl}" width="640" height="640" />';
       
       content = content.replace('{photoUrl}', scope.photoUrl);
       videoTag = videoTag.replace('{videoUrl}', scope.videoUrl);
