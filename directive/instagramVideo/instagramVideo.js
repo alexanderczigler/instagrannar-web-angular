@@ -5,14 +5,23 @@ angular.module('ingr-web').directive('instagramVideo', function ($compile) {
     restrict: 'E',
     replace: true,
     scope: {
-      url: '='
+      videoUrl: '=',
+      photoUrl: '='
     },
     templateUrl: 'directive/instagramVideo/instagramVideo.html',
     link: function (scope, element, attrs, fn) {
 
-      var newDirective = angular.element('<video src="' + scope.url + '" controls>Your browser does not support the <code>video</code> element.</video>');
-      element.append(newDirective);
-      $compile(newDirective)(scope);
+      // Create and compile video tag.
+      var videoTag = '<video autoplay="true" loop="true" src="{videoUrl}">{content}</video>';
+      var content = '<img src="{photoUrl}" />';
+      
+      content = content.replace('{photoUrl}', scope.photoUrl);
+      videoTag = videoTag.replace('{videoUrl}', scope.videoUrl);
+      videoTag = videoTag.replace('{content}', scope.content);
+      
+      var videoElement = angular.element(videoTag);
+      element.append(videoElement);
+      $compile(videoElement)(scope);
 
     }
   };

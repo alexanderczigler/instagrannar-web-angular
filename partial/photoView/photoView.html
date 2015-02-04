@@ -10,17 +10,21 @@
           <h3>
             Postad av <a target="_blank" href="http://instagram.com/{{instagram.user.username}}">@{{instagram.user.username}}</a>  {{t(instagram.created_time)}}
           </h3>
-          <instagram-video data-ng-if="instagram.type === 'video'" url="instagram.videos.standard_resolution.url">
-          </instagram-video>
           
+          <!-- Video -->
+          <instagram-video data-ng-if="instagram.type === 'video'" video-url="instagram.videos.standard_resolution.url" photo-url="instagram.images.standard_resolution.url">
+          </instagram-video>
+            
+          <!-- Photo -->
           <div class="instag-image" data-ng-if="instagram.type !== 'video'">
             <a href="{{instagram.link}}" data-ng-show="instagram.id === 'ad'">
               <img data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}" width="640" height="640"/>
             </a>
             <a target="_blank" href="{{instagram.link}}" data-ng-hide="instagram.id === 'ad'">
               <img data-ng-src="{{instagram.images.standard_resolution.url}}" alt="{{instagram.caption.text}}" width="640" height="640"/>
-            </a>
+            </a>  
           </div>
+          
           <p>
             {{instagram.caption.text}}
           </p>
