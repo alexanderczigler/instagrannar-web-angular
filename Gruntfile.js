@@ -167,8 +167,7 @@ module.exports = function (grunt) {
       test: {
         src: ['test/unit/*.html'],
         options: {
-          run: true,
-          reporter: 'mocha-osx-reporter'
+          run: true
         }
       }
     },
