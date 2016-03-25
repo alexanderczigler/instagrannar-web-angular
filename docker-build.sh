@@ -1,3 +1,4 @@
-docker build -t ingr-web .
-docker tag -f ingr-web tutum.co/alexanderczigler/ingr-web
-docker push tutum.co/alexanderczigler/ingr-web
+#!/bin/sh
+docker build -t instagrannar-web .
+docker tag -f instagrannar-web instagrannar/web
+docker push instagrannar/web
