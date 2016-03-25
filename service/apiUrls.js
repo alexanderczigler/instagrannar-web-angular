@@ -29,7 +29,7 @@ angular.module('ingr-web').service('apiUrls', function (environment) {
     return {
       byLocation: 'pictures?lng={longitude}&lat={latitude}&dst={zoomlevel}&max_ts={maxTs}&min_ts={minTs}',
       byId: 'pictures/{id}',
-      base: 'http://instagrannar.se:3000/',
+      base: 'http://api.instagrannar.se/',
       oauth: {
         base: 'https://instagram.com/oauth/authorize/?client_id={client_id}&redirect_uri={redirect_uri}&response_type=token',
         client_id: '71b70b10157a4b42b9a578507de24436',
